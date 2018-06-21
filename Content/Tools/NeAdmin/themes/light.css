@@ -1,0 +1,114 @@
+/*scollerbar-white*/
+
+
+/*header-white*/
+.neadmin-header {
+    background-color: #fff;
+    border-bottom: 1px solid #e9ecf3;
+}
+
+.ne-toolbar-item {
+    color: #2d7ddc;
+}
+
+.ne-toolbar-spliter {
+    border-color: #d2d1d1;
+}
+
+
+/*topmenu-white*/
+.ne-menubar-top > li > a.ne-menu-link {
+    background: transparent;
+    color: #777;
+}
+
+.ne-menubar > li.active > a.ne-menu-link,
+.ne-menubar > li.active > a:hover {
+    background: transparent !important;
+    color: #157efb;
+}
+
+.ne-menubar > li:hover > a.ne-menu-link,
+.ne-menubar > li > a.ne-menu-link:active,
+.ne-menubar > li > a.ne-menu-link:focus,
+.ne-menubar > li > a.ne-menu-link:hover {
+    background: transparent !important;
+    color: #5b9bd1;
+}
+
+.ne-menubar-top > li.expand > a.ne-menu-link {
+    background: transparent !important;
+    color: #5b9bd1;
+}
+
+.ne-menubar > li.active > a.ne-menu-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    height: 3px;
+    background-color: #157efb;
+    border-radius: 4px;
+}
+
+.ne-menubar-top > li.expand > a.ne-menu-link {
+}
+
+/*sidebar-white*/
+.neadmin-aside .ne-sidebar-toggler {
+    border-bottom: 1px solid #fff;
+    background: #fff;
+    color: #777;
+}
+
+    .neadmin-aside .ne-sidebar-toggler + .ne-sidebar, .neadmin-aside .ne-sidebar + .ne-sidebar {
+        border-top: 1px solid #eee;
+    }
+
+.neadmin-aside .ne-menu {
+    background: #fff;
+}
+
+.neadmin-aside .ne-menu-link {
+    color: #485a6a;
+}
+
+    .neadmin-aside .ne-menu-link > .ne-menu-link-icon > [class^="ne-icon-"] {
+        color: #a7bdcd;
+        opacity: 1;
+    }
+
+    .neadmin-aside .ne-menu-link:hover,
+    .neadmin-aside .active > .ne-menu-link,
+    .neadmin-aside .expand > .ne-menu-link {
+        background: #f2f6f9;
+        color: #5b9bd1;
+    }
+
+        .neadmin-aside .ne-menu-link:hover > .ne-menu-link-icon > [class^="ne-icon-"],
+        .neadmin-aside .active > .ne-menu-link > .ne-menu-link-icon > [class^="ne-icon-"],
+        .neadmin-aside .expand > .ne-menu-link > .ne-menu-link-icon > [class^="ne-icon-"] {
+            color: #5b9bd1;
+        }
+
+.neadmin-aside .ne-sidebar > li.active > .ne-menu-link {
+    background: #f2f6f9;
+    font-weight: 600;
+}
+
+    .neadmin-aside .ne-sidebar > li.active > .ne-menu-link::before {
+        background: #5C9ACF;
+    }
+
+.neadmin-aside.neadmin-aside-closed .ne-sidebar > li:hover > .ne-menu-link {
+    background: #f2f6f9;
+}
+
+.neadmin-aside.neadmin-aside-cling {
+    background: #fff;
+}
+
+.neadmin-topbar .ne-dropdown::before {
+border-color:#fff;
+}

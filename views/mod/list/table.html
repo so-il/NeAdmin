@@ -1,0 +1,407 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+
+</head>
+
+<body>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>搜索区</span>
+            </div>
+            <div class="header-actions">
+                <button class="ne-btn ne-btn-default" onclick="switchSearchFields(this);">高级搜索</button>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="j-searchfields-default" class="ne-row winging">
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">关键词：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">类别：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select class="ne-select">
+                                    <option>选项1</option>
+                                    <option>选项2</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">日期：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <input type="text" data-type="date" class="ne-input w100" placeholder="0000-00-00" ne-role="picker" ne-tap="show:picker">
+                                <label class="ne-icon-calender ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">数值：</span>
+                        </label>
+                        <div>
+                            <input type="number" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="j-searchfields-senior" class="ne-row winging none">
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">关键词：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">关键词：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">关键词：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">类别：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select class="ne-select">
+                                    <option>选项1</option>
+                                    <option>选项2</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">日期：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <input type="text" data-type="date" class="ne-input w100" placeholder="0000-00-00" ne-role="picker" ne-tap="show:picker">
+                                <label class="ne-icon-calender ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">数值：</span>
+                        </label>
+                        <div>
+                            <input type="number" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">名称：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-3">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w4">关键词：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input w100" placeholder="占位符...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary" onclick="loadData();">
+                <i class="ne-icon-magnifier"></i>
+                <span class="text-tagged">搜索</span>
+            </button>
+            <button class="ne-btn ne-btn-default">
+                <i class="ne-icon-refresh"></i>
+                <span class="text-tagged">清除</span>
+            </button>
+        </div>
+    </div>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>分页列表</span>
+                <small>这里是列表内容描述...</small>
+            </div>
+            <div class="header-actions" id="j-atable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-cell padding-0 margin-bottom-15">
+                <div class="ne-cell-center">
+                    <button class="ne-btn ne-btn-default" id="btn-add" onclick="onAddBtnClick();">
+                        <i class="ne-icon-plus-o"></i>
+                        <span class="text-tagged">新增</span>
+                    </button>
+                    <button class="ne-btn ne-btn-default disabled" id="btn-delete" onclick="onRemoveBtnClick();">
+                        <i class="ne-icon-trash"></i>
+                        <span class="text-tagged">删除</span>
+                    </button>
+                    <button class="ne-btn ne-btn-default disabled" id="btn-edit" onclick="onEditBtnClick();">
+                        <i class="ne-icon-edit"></i>
+                        <span class="text-tagged">修改</span>
+                    </button>
+                </div>
+                <div class="ne-cell-right">
+
+                </div>
+            </div>
+            <div id="j-atable-container"></div>
+        </div>
+    </div>
+    <div id="j-editPanel" class="ne-panel ne-panel-fordialog" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>编辑窗口</span>
+            </div>
+            <div class="header-actions">
+                <a class="block j-modal-closebtn">
+                    <i class="ne-icon-delete"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-row winging">
+                <div class="ne-field">
+                    <label>
+                        <span class="w4">关键词：</span>
+                    </label>
+                    <div>
+                        <input type="text" class="ne-input w100" placeholder="占位符...">
+                    </div>
+                </div>
+                <div class="ne-field">
+                    <label>
+                        <span class="w4">类别：</span>
+                    </label>
+                    <div>
+                        <div class="ne-input_withicon_right">
+                            <select class="ne-select">
+                                <option>选项1</option>
+                                <option>选项2</option>
+                            </select>
+                            <label class="ne-icon-arrow-down ne-input-icon"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-field">
+                    <label>
+                        <span class="w4">日期：</span>
+                    </label>
+                    <div>
+                        <div class="ne-input_withicon_right">
+                            <input type="text" data-type="date" class="ne-input w100" placeholder="0000-00-00" ne-role="picker" ne-tap="show:picker">
+                            <label class="ne-icon-calender ne-input-icon"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary j-modal-submitbtn">
+                <i class="ne-icon-success"></i>
+                <span class="text-tagged">提交</span>
+            </button>
+            <button class="ne-btn ne-btn-default j-modal-cancelbtn">
+                <i class="ne-icon-delete"></i>
+                <span class="text-tagged">放弃</span>
+            </button>
+        </div>
+    </div>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+    <script>
+        //创建一个dataTable
+        var dt_demo = Ne.dataTable({
+            tableContainer: '#j-atable-container',
+            columnsControlContainer: '#j-atable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: '编号',
+                style: {
+                    width: '50px'
+                },
+                sortable: true
+            }, {
+                dataIndex: 'b',
+                text: '姓名',
+                render: function () {
+                    return '张小明';
+                }
+            }, {
+                dataIndex: 'c',
+                text: '描述',
+                style: {
+                    width: '50%'
+                },
+                render: function () {
+                    return '人们对沙利文博士当选卫生部部长表示满意，你好，谢谢，再见。';
+                }
+            }, {
+                dataIndex: 'd',
+                text: '备注',
+                render: function () {
+                    return '人们对沙利文博士当选卫生部部长表示满意，你好，谢谢，再见。';
+                }
+            }, {
+                dataIndex: 'd',
+                text: '操作',
+                style: {
+                    width: '4em'
+                },
+                render: function () {
+                    return '<a href="/views/mod/profile/basic.html" class="action-link">查看详情</a>';
+                }
+            }],
+            rowMultiSelectAble: true,
+            pageSize: 10,
+            events: {
+                onRowSelect: function (selectedRows, selectedRecords) {
+                    if (selectedRecords.length > 0) {
+                        document.querySelector('#btn-delete').classList.remove('disabled');
+                        document.querySelector('#btn-edit').classList.remove('disabled');
+                    } else {
+                        document.querySelector('#btn-delete').classList.add('disabled');
+                        document.querySelector('#btn-edit').classList.add('disabled');
+                    }
+                },
+                onRowClick: function (row, record) {},
+                onPageRender: function (records) {
+                    document.querySelector('#btn-delete').classList.add('disabled');
+                    document.querySelector('#btn-edit').classList.add('disabled');
+                }
+            }
+        });
+
+        //modal
+        var modal_edit = Ne.modal({
+            content: document.querySelector('#j-editPanel'),
+            style: {
+                width: '400px'
+            },
+            init: function (m) {
+                var el_closebtn = m.content.querySelector('.j-modal-closebtn');
+                var el_submitbtn = m.content.querySelector('.j-modal-submitbtn');
+                var el_cancelbtn = m.content.querySelector('.j-modal-cancelbtn');
+                el_closebtn.onclick = el_cancelbtn.onclick = function () {
+                    modal_edit.hide();
+                }
+                el_submitbtn.onclick = function () {
+                    dt_demo.refresh();
+                    modal_edit.hide();
+                }
+            }
+        });
+
+        //切换搜索面板
+        function switchSearchFields(target) {
+            var el_panel_default = document.querySelector('#j-searchfields-default');
+            var el_panel_senior = document.querySelector('#j-searchfields-senior');
+            if (el_panel_default.classList.contains('none')) {
+                el_panel_default.classList.remove('none');
+                el_panel_senior.classList.add('none');
+                target.innerText = '高级搜索';
+            } else {
+                el_panel_default.classList.add('none');
+                el_panel_senior.classList.remove('none');
+                target.innerText = '回到基础搜索';
+            }
+        }
+
+        //删除记录
+        function onRemoveBtnClick() {
+            Ne.dialog.confirm('提示', '确认要删除已选中的记录吗？', function (flag) {
+                if (flag) {
+                    dt_demo.querySelectedRows().rows.forEach(function (item) {
+                        item.parentElement.removeChild(item);
+                    });
+                    dt_demo.refresh();
+                }
+            });
+        }
+
+        //修改
+        function onEditBtnClick() {
+            modal_edit.show();
+        }
+
+        //修改
+        function onAddBtnClick() {
+            modal_edit.show();
+        }
+
+        //dataTable加载数据
+        function loadData() {
+            dt_demo.loadData({
+                api: '',
+                debug: true,
+                ajax: Ne.ajax,
+                para: {}
+            });
+        }
+        loadData();
+    </script>
+</body>
+
+</html>

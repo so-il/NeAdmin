@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+
+</head>
+
+<body>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>列可选分页表</span>
+            </div>
+            <div class="header-actions" id="j-basictable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="j-basictable-container"></div>
+        </div>
+    </div>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>行可多选分页表</span>
+            </div>
+            <div class="header-actions" id="j-atable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-cell padding-0 margin-bottom-15">
+                <div class="ne-cell-center">
+                    <button class="ne-btn ne-btn-default">
+                        <i class="ne-icon-plus-o"></i>
+                        <span class="text-tagged">新增</span>
+                    </button>
+                    <button class="ne-btn ne-btn-default disabled" id="btn-delete">
+                        <i class="ne-icon-trash"></i>
+                        <span class="text-tagged">删除</span>
+                    </button>
+                    <button class="ne-btn ne-btn-default disabled" id="btn-edit">
+                        <i class="ne-icon-edit"></i>
+                        <span class="text-tagged">修改</span>
+                    </button>
+                </div>
+            </div>
+            <div id="j-atable-container"></div>
+        </div>
+    </div>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>行可单选分页表</span>
+            </div>
+            <div class="header-actions" id="j-btable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="j-btable-container"></div>
+        </div>
+    </div>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>行可拓展分页表</span>
+            </div>
+            <div class="header-actions" id="j-ctable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="j-ctable-container"></div>
+        </div>
+    </div>
+    <div class="ne-panel" ne-role="panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>表高度可固定分页表</span>
+            </div>
+            <div class="header-actions" id="j-dtable-colctrlContainer">
+
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="j-dtable-container"></div>
+        </div>
+    </div>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+    <script>
+        
+        var dt_basic = Ne.dataTable({
+            tableContainer: '#j-basictable-container',
+            columnsControlContainer: '#j-basictable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: 'A',
+                sortable: true
+            }, {
+                dataIndex: 'b',
+                text: 'B',
+                hidden: true,
+                sortable: true
+            }, {
+                dataIndex: 'c',
+                text: 'C'
+            }, {
+                dataIndex: 'd',
+                text: 'D'
+            }],
+            pageSize: 5
+        });
+        dt_basic.loadData({
+            api: '',
+            debug: true,
+            para: {
+
+            }
+        });
+
+        var dt_a = Ne.dataTable({
+            tableContainer: '#j-atable-container',
+            columnsControlContainer: '#j-atable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: 'A',
+                sortable: true
+            }, {
+                dataIndex: 'b',
+                text: 'B'
+            }, {
+                dataIndex: 'c',
+                text: 'C'
+            }, {
+                dataIndex: 'd',
+                text: 'D'
+            }],
+            rowMultiSelectAble: true,
+            pageSize: 5,
+            events: {
+                onRowSelect: function (selectedRows, selectedRecords) {
+                    console.log(selectedRecords);
+                    if (selectedRecords.length > 0) {
+                        document.querySelector('#btn-delete').classList.remove('disabled');
+                        document.querySelector('#btn-edit').classList.remove('disabled');
+                    } else {
+                        document.querySelector('#btn-delete').classList.add('disabled');
+                        document.querySelector('#btn-edit').classList.add('disabled');
+                    }
+                },
+                onRowClick: function (row, record) {},
+                onPageToggle: function (pageIndex, pageSize) {},
+                complete: function () {}
+            }
+        });
+        dt_a.loadData({
+            api: '',
+            debug: true,
+            para: {
+
+            }
+        });
+
+        var dt_b = Ne.dataTable({
+            tableContainer: '#j-btable-container',
+            columnsControlContainer: '#j-btable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: 'A'
+            }, {
+                dataIndex: 'b',
+                text: 'B'
+            }, {
+                dataIndex: 'c',
+                text: 'C'
+            }, {
+                dataIndex: 'd',
+                text: 'D'
+            }],
+            rowSingleSelectAble: true,
+            pageSize: 5,
+            paramdata: {
+                svc: '',
+                para: {
+                    sort: {
+                        index: '',
+                        type: 'asc'
+                    }
+                },
+                dataRoot: 'a.b.c',
+                datafliter: function (data) {
+
+                }
+            }
+        });
+        dt_b.loadData({
+            api: '',
+            debug: true,
+            para: {
+
+            }
+        });
+
+        var dt_c = Ne.dataTable({
+            tableContainer: '#j-ctable-container',
+            columnsControlContainer: '#j-ctable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: 'A'
+            }, {
+                dataIndex: 'b',
+                text: 'B'
+            }, {
+                dataIndex: 'c',
+                text: 'C'
+            }, {
+                dataIndex: 'd',
+                text: 'D'
+            }],
+            rowExtendRender: function (record) {
+                var res = '';
+                for (var i in record) {
+                    res += '<div class="ne-col-4">' + i + ':' + record[i] + '</div>';
+                }
+                res = '<div class="ne-row">' + res + '</div>';
+                return res;
+            },
+            pageSize: 5
+        });
+        dt_c.loadData({
+            api: '',
+            debug: true,
+            para: {
+
+            }
+        });
+
+        var dt_d = Ne.dataTable({
+            tableContainer: '#j-dtable-container',
+            columnsControlContainer: '#j-dtable-colctrlContainer',
+            columns: [{
+                dataIndex: 'a',
+                text: 'A'
+            }, {
+                dataIndex: 'b',
+                text: 'B'
+            }, {
+                dataIndex: 'c',
+                text: 'C'
+            }, {
+                dataIndex: 'd',
+                text: 'D'
+            }],
+            pageSize: 30,
+            maxHeight: '220px'
+        });
+        dt_d.loadData({
+            api: '',
+            debug: true,
+            para: {
+
+            }
+        });
+    </script>
+</body>
+
+</html>

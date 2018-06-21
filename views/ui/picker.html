@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+</head>
+
+<body>
+    <div class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>日期时间选择器</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="hr-break"><span>不同时间类型</span></div>
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">日期：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="date" class="ne-input" placeholder="日期" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">时间：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="time" class="ne-input" placeholder="时间" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">日期时间：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="datetime" class="ne-input" placeholder="时间" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">月份：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="month" class="ne-input" placeholder="时间" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">周：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="week" class="ne-input" placeholder="时间" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hr-break"><span>范围限制与日期格式</span></div>
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">范围限制：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="date" class="ne-input" placeholder="范围限制：" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                        <div class="ne-field">
+                            <label>
+                                <span class="w7">指定不可选区间：</span>
+                            </label>
+                            <div>
+                                <input type="text" data-type="date" class="ne-input" placeholder="区间" ne-role="picker" ne-tap="show:picker">
+                            </div>
+                        </div>
+                    </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w7">日期格式：</span>
+                        </label>
+                        <div>
+                            <input type="text" data-type="date" class="ne-input" placeholder="年-月-日" ne-role="picker" ne-tap="show:picker">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>地区选择器</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+           
+        </div>
+    </div>
+    <div class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>自定义选择器</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+           
+        </div>
+    </div>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+</body>
+
+</html>

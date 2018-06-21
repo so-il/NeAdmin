@@ -1,0 +1,163 @@
+.q-panel {
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #e6e8ec;
+    padding: 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+    .q-panel + .q-panel {
+        margin-top: 20px;
+    }
+
+.q-panel-error {
+    border: 3px dashed #bbbaba;
+    background-color: #fff6f6;
+}
+
+.q-desc {
+    font-size: 16px;
+    text-align: left;
+    padding: 0.75em 2em;
+}
+
+.q-desc-index {
+    font-weight: bolder;
+    position: absolute;
+    margin-left: -2em;
+}
+
+.q-desc-isrequired, .q-desc-iskeypoint {
+    color: #157efb;
+    font-style: italic;
+    font-size: .857em;
+    margin-left: 10px;
+}
+
+.q-desc-iskeypoint {
+    color: #f00;
+}
+
+.q-editor {
+    background: #f6f6f6;
+    margin: 20px -20px -20px -20px;
+    padding: 20px;
+    border-top: 1px dashed #ccc;
+}
+
+.q-options {
+    padding: .75em 1.25em;
+}
+
+.q-options-input.ne-input {
+    padding: 0 2px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+}
+
+.q-editor-emptysmg {
+    color: #ccc;
+    padding: 10px;
+    border: 2px dashed #eee;
+    text-align: center;
+}
+
+.q-icon-radio {
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    color: #bbb;
+}
+
+    .q-icon-radio::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 50%;
+        background-color: currentColor;
+    }
+
+.q-icon-checkbox {
+    width: 25px;
+    height: 25px;
+    border: 1px solid;
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    color: #bbb;
+}
+
+    .q-icon-checkbox::after {
+        content: "";
+        width: 6px;
+        height: 14px;
+        margin-top: 1px;
+        border-right: 2px solid;
+        border-bottom: 2px solid;
+        display: inline-block;
+        transform: rotate(36deg);
+    }
+
+.q-icon-input {
+    width: 25px;
+    height: 20px;
+    border: 1px solid;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    box-sizing: border-box;
+    color: #bbb;
+}
+
+    .q-icon-input::after {
+        content: "";
+        width: 2px;
+        height: 12px;
+        background-color: currentColor;
+        display: inline-block;
+        margin-left: -10px;
+    }
+
+.questionnaire {
+    width: 900px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.questionnaire-info {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.questionnaire-title {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.questionnaire-desc {
+    text-align: center;
+}
+
+.questionnaire-actions {
+    margin-top: 20px;
+}
+
+    .questionnaire-actions .ne-btn {
+        font-size: 1.5em;
+        padding: 15px 30px;
+    }

@@ -1,0 +1,471 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+    <link rel="stylesheet" href="questionnaire.css" />
+</head>
+
+<body>
+
+    <div class="ne-row">
+        <div class="ne-col-3 padding-right-20" style="min-height: 500px;">
+            <div id="questionnaire-editor-toolbar" style="position: fixed;width: 22.5%;top: 20px;left: 20px;">
+                <div class="ne-panel" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>题型选择</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <ul class="ne-list border-none">
+                            <li>
+                                <a class="ne-cell" href="javascript:;" onclick="qnEditor.createQuestion(1)">
+                                    <div class="ne-cell-left">
+                                        <i class="q-icon-radio"></i>
+                                    </div>
+                                    <div class="ne-cell-center text-excerpt">
+                                        <strong>单选题</strong>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="ne-cell" href="javascript:;" onclick="qnEditor.createQuestion(2)">
+                                    <div class="ne-cell-left">
+                                        <i class="q-icon-checkbox"></i>
+                                    </div>
+                                    <div class="ne-cell-center text-excerpt">
+                                        <strong>多选题</strong>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="ne-cell" href="javascript:;" onclick="qnEditor.createQuestion(4)">
+                                    <div class="ne-cell-left">
+                                        <i class="q-icon-input"></i>
+                                    </div>
+                                    <div class="ne-cell-center text-excerpt">
+                                        <strong>问答填空题</strong>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="ne-cell disabled" href="javascript:;">
+                                    <div class="ne-cell-left">
+                                        <img class="iconsize-small bg-grey border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                    </div>
+                                    <div class="ne-cell-center text-excerpt">
+                                        <strong>矩阵单选题</strong>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="ne-cell disabled" href="javascript:;">
+                                    <div class="ne-cell-left">
+                                        <img class="iconsize-small bg-grey border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                    </div>
+                                    <div class="ne-cell-center text-excerpt">
+                                        <strong>矩阵多选题</strong>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="margin-top-20">
+                    <buttton class="ne-btn ne-btn-primary size-x-large block margin-bottom-20" onclick="saveQuestionnaireData();">
+                        <i class="ne-icon-success-f" style="font-size:1.2em;"></i>
+                        <span class="text-tagged" style="margin-top: -4px;">保存编辑</span>
+                    </buttton>
+                    <a class="ne-btn ne-btn-default size-x-large block margin-0 back">
+                        <i class="ne-icon-undo" style="font-size:1.2em;"></i>
+                        <span class="text-tagged" style="margin-top:-4px;">返回</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ne-col-9">
+            <div id="j-editor-container"></div>
+        </div>
+    </div>
+
+    <script id="tpl-questionnaire-editor" type="text/template">
+        <div class="questionnaire-editor">
+            <div class="questionnaire-info bg-white">
+                <div class="questionnaire-title"></div>
+                <div class="questionnaire-desc"></div>
+            </div>
+            <div class="questionnaire-questions">
+                <div class="ne-panel" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span></span>
+                        </div>
+                        <div class="header-actions">
+                            <div class="inline-block margin-right-15 ne-tips" data-tips="编辑" data-action="edit">
+                                <i class="ne-icon-edit"></i>
+                            </div>
+                            <div class="inline-block margin-right-15 ne-tips" data-tips="复制" data-action="copy">
+                                <i class="ne-icon-docs"></i>
+                            </div>
+                            <div class="inline-block margin-right-15 ne-tips" data-tips="删除" data-action="remove">
+                                <i class="ne-icon-trash"></i>
+                            </div>
+                            <span style="display: inline-block;vertical-align: middle;width: 0;height: 20px;border-left: 1px solid #d0d0d0;margin: 3px 15px 0 10px;"></span>
+                            <div class="inline-block margin-right-15 ne-tips" data-task-action="shiftup" data-tips="向上移" data-action="movetoprev">
+                                <i class="ne-icon-iarrow-up size-double"></i>
+                            </div>
+                            <div class="inline-block margin-right-15 ne-tips" data-task-action="shiftdown" data-tips="向下移" data-action="movetonext">
+                                <i class="ne-icon-iarrow-down size-double"></i>
+                            </div>
+                            <div class="inline-block ne-tips" data-tips="收起展开" ne-tap="toggle:panel">
+                                <i class="ne-icon-arrow-up size-double ne-panel-switch"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <div class="q-preview">
+
+                        </div>
+                        <div class="q-editor none">
+                            <div class="ne-row winging">
+                                <div class="ne-col-6">
+                                    <div class="ne-field">
+                                        <label class="block margin-bottom-5">
+                                            <span>问题描述：</span>
+                                        </label>
+                                        <div class="block">
+                                            <div class="ne-markdown">
+                                                <div class="ne-markdown-toolbar">
+                                                    <div class="inline-block align-middle ne-tips" data-tips="添加图片">
+                                                        <i class="ne-icon-pic"></i>
+                                                    </div>
+                                                    <div class="ne-markdown-count">0/300</div>
+                                                </div>
+                                                <textarea placeholder="300字，相关输入提示" rows="8" maxlength="300" data-editor-control="content" value=""></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ne-col-6">
+                                    <div class="ne-field">
+                                        <label class="block margin-bottom-5">
+                                            <span>转换题型：</span>
+                                        </label>
+                                        <div class="block">
+                                            <div class="ne-input_withicon_right bg-white">
+                                                <select class="ne-select" data-editor-control="type">
+                                                    <option value="1">单选题</option>
+                                                    <option value="2">多选题</option>
+                                                    <option value="4">问答填空题</option>
+                                                </select>
+                                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-row">
+                                        <div class="ne-col-6">
+                                            <div class="ne-field">
+                                                <label class="block margin-bottom-5">
+                                                    <span>是否必答：</span>
+                                                </label>
+                                                <div class="block">
+                                                    <div class="inline-block margin-right-10">
+                                                        <input type="radio" name="isrequired" value="1" data-editor-control="isrequired1">
+                                                        <label class="ne-radio align-middle"></label>
+                                                        <span class="text-tagged">必答</span>
+                                                    </div>
+                                                    <div class="inline-block">
+                                                        <input type="radio" name="isrequired" value="2" data-editor-control="isrequired2">
+                                                        <label class="ne-radio align-middle"></label>
+                                                        <span class="text-tagged">非必答</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ne-col-6">
+                                            <div class="ne-field">
+                                                <label class="block margin-bottom-5">
+                                                    <span>是否重点题目：</span>
+                                                </label>
+                                                <div class="block">
+                                                    <div class="inline-block margin-right-10">
+                                                        <input type="radio" name="iskeypoint" value="1" data-editor-control="iskeypoint1">
+                                                        <label class="ne-radio align-middle"></label>
+                                                        <span class="text-tagged">是</span>
+                                                    </div>
+                                                    <div class="inline-block">
+                                                        <input type="radio" name="iskeypoint" value="2" data-editor-control="iskeypoint2">
+                                                        <label class="ne-radio align-middle"></label>
+                                                        <span class="text-tagged">否</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-field disabled">
+                                        <label class="block margin-bottom-5">
+                                            <span>是否无条件跳题：</span>
+                                        </label>
+                                        <div class="block">
+                                            <div class="ne-cell padding-0">
+                                                <span class="ne-cell-left">
+                                                    <input type="checkbox">
+                                                    <label class="ne-checkbox"></label>
+                                                </span>
+                                                <span class="ne-cell-center">
+                                                    <span>填写此题后跳转到第</span>
+                                                    <input class="ne-input w3 margin-left-5 margin-right-5"
+                                                        style="padding:4px;" />
+                                                    <span>题</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ne-col-12">
+                                    <div class="ne-field">
+                                        <label class="block margin-bottom-5">
+                                            <span>选项设置：
+                                                <span class="ne-tips" data-tips="新增选项" data-editor-control="addoption" style="margin-top: -2px;display: inline-block;vertical-align: top;">
+                                                    <i class="ne-icon-plus-f green-7"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="block q-editor-options">
+                                            <table class="ne-table">
+                                                <thead style="background-color: #f5f5f5;">
+                                                    <tr>
+                                                        <th data-colindex="1" style="width:51%;">选项文字</th>
+                                                        <th data-colindex="2">跳题</th>
+                                                        <th data-colindex="3">分值</th>
+                                                        <th data-colindex="4">允许填空</th>
+                                                        <th data-colindex="5">选项互斥</th>
+                                                        <th data-colindex="6">必填</th>
+                                                        <th data-colindex="7">默认</th>
+                                                        <th data-colindex="8">默认</th>
+                                                        <th data-colindex="9">操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td data-colindex="1" style="padding-right:21px;">
+                                                            <input type="text" class="ne-input" data-optionedit-control="content">
+                                                        </td>
+                                                        <td data-colindex="2">
+                                                            <input type="text" class="ne-input w4" data-optionedit-control="jump">
+                                                        </td>
+                                                        <td data-colindex="3">
+                                                            <input type="number" class="ne-input w4" data-optionedit-control="score">
+                                                        </td>
+                                                        <td data-colindex="4">
+                                                            <input type="checkbox" data-optionedit-control="iseditable">
+                                                            <label class="ne-checkbox"></label>
+                                                        </td>
+                                                        <td data-colindex="5">
+                                                            <input type="checkbox" data-optionedit-control="ismutex">
+                                                            <label class="ne-checkbox"></label>
+                                                        </td>
+                                                        <td data-colindex="6">
+                                                            <input type="checkbox" data-optionedit-control="isrequired">
+                                                            <label class="ne-checkbox"></label>
+                                                        </td>
+                                                        <td data-colindex="7">
+                                                            <input type="checkbox" data-optionedit-control="isdefault">
+                                                            <label class="ne-checkbox"></label>
+                                                        </td>
+                                                        <td data-colindex="8">
+                                                            <input type="radio" data-optionedit-control="isdefault2">
+                                                            <label class="ne-radio"></label>
+                                                        </td>
+                                                        <td data-colindex="9">
+                                                            <div class="inline-block margin-right-15 ne-tips" data-tips="删除" data-optionedit-control="remove">
+                                                                <i class="ne-icon-trash"></i>
+                                                            </div>
+                                                            <div class="inline-block margin-right-15 ne-tips" data-tips="向上移" data-optionedit-control="movetoprev">
+                                                                <i class="ne-icon-iarrow-up-o"></i>
+                                                            </div>
+                                                            <div class="inline-block ne-tips" data-tips="向下移" data-optionedit-control="movetonext">
+                                                                <i class="ne-icon-iarrow-down-o"></i>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ne-col-12">
+                                    <div class="ne-field">
+                                        <label class="block margin-bottom-5">
+                                            <span>依赖逻辑：
+                                                <span class="ne-tips" data-tips="新增依赖逻辑" data-editor-control="addlogic"
+                                                    style="margin-top: -2px;display: inline-block;vertical-align: top;">
+                                                    <i class="ne-icon-plus-f green-7"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                        <div class="block" data-editor-control="logics">
+                                            <div class="q-editor-emptysmg">未添加任何依赖逻辑</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="padding-15 align-center border-top" style="border-style:dashed;margin-bottom:-20px;">
+                                <button class="ne-btn ne-btn-primary" data-editor-control="submit">完成编辑</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="questionnaire-logicbinder ne-panel ne-panel-fordialog" ne-role="panel">
+                <div class="ne-panel-header">
+                    <div class="header-title">
+                        <span id="featuresType-title">关联逻辑</span>
+                    </div>
+                    <div class="header-actions">
+                        <a href="javascript:;" ne-tap="hide:dialog">
+                            <span class="ne-panel-switch inline-block">
+                                <i class="ne-icon-delete"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="ne-panel-body">
+                    <div class="ne-field">
+                        <label class="block margin-bottom-5">
+                            <span>请选择要关联的题目：</span>
+                        </label>
+                        <div class="block">
+                            <div class="ne-input_withicon_right bg-white">
+                                <select class="ne-select" data-control="question"></select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ne-field">
+                        <label class="block margin-bottom-5">
+                            <span>请选择要关联的选项：</span>
+                        </label>
+                        <div class="block" data-control="options">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-panel-footer">
+                    <button class="ne-btn ne-btn-primary" data-control="submit">确定</button>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="tpl-question-preview" type="text/template">
+        <div class="q-body">
+            <div class="q-desc">
+                <span class="q-desc-index">{order}、</span>
+                <span class="q-desc-content">{content}</span>
+                {if required}
+                <span class="q-desc-isrequired">[必答]</span>
+                {/if} 
+                {if keypoint}
+                <span class="q-desc-iskeypoint">[重点]</span>
+                {/if}
+            </div>
+            <div class="q-options">
+                {if type==1} {each options as option i}
+                <div class="q-option">
+                    <div class="ne-cell">
+                        <span class="ne-cell-left">
+                            {if option.isdefault}
+                            <input type="radio" name="{index}_option" id="{index}_option_{i}" checked="checked"> {else}
+                            <input type="radio" name="{index}_option" id="{index}_option_{i}"> {/if}
+                            <label class="ne-radio" for="{index}_option_{i}"></label>
+                        </span>
+                        <span class="ne-cell-center">
+                            {option.content} {if option.iseditable}
+                            <input type="text" class="ne-input q-options-input" name="{index}_option_{i}" id="{index}_option_{i}_input"> {/if}
+                        </span>
+                    </div>
+                </div>
+                {/each} {else if type==2} {each options as option i}
+                <div class="q-option">
+                    <div class="ne-cell">
+                        <span class="ne-cell-left">
+                            {if option.isdefault}
+                            <input type="checkbox" name="{index}_option" id="{index}_option_{i}" checked="checked"> {else}
+                            <input type="checkbox" name="{index}_option" id="{index}_option_{i}"> {/if}
+                            <label class="ne-checkbox" for="{index}_option_{i}"></label>
+                        </span>
+                        <span class="ne-cell-center">
+                            {option.content} {if option.iseditable}
+                            <input type="text" class="ne-input q-options-input" name="{index}_option_{i}" id="{index}_option_{i}_input"> {/if}
+                        </span>
+                    </div>
+                </div>
+                {/each} {else if type==4} {each options as option i}
+                <div class="q-option">
+                    <div class="ne-cell">
+                        <span class="ne-cell-left">
+                            {option.content}
+                        </span>
+                        <span class="ne-cell-center">
+                            <input type="text" class="ne-input q-options-input" name="{index}_option" id="{index}_option_{i}">
+                        </span>
+                    </div>
+                </div>
+                {/each} {/if}
+            </div>
+        </div>
+    </script>
+
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+    <script src="/Content/Scripts/app.js"></script>
+    <script src="questionnaire.js"></script>
+    <script>
+        //固定左侧工具栏
+        function bindScrollEvent() {
+            if (window.parent) {
+                var parentWindow = window.parent;
+                var parentDocument = parentWindow.document;
+                var toolbar = document.querySelector('#questionnaire-editor-toolbar');
+                parentDocument.body.scorllername = 'questionnaireDesign';
+                parentDocument.body.onscroll = function () {
+                    var stop = parentDocument.documentElement.scrollTop;
+                    toolbar.style.top = 20 + stop + 'px';
+                }
+            }
+        }
+        function clearScrollEvent() {
+            if (window.parent) {
+                var parentWindow = window.parent;
+                var parentDocument = parentWindow.document;
+                if (parentDocument.body.scorllername == 'questionnaireDesign') {
+                    parentDocument.body.onscroll = null;
+                    parentDocument.body.scorllername = '';
+                    delete parentDocument.body.scorllername;
+                }
+            }
+        }
+        function viewOnDestroy() {
+            clearScrollEvent();
+        }
+        bindScrollEvent();
+
+        //创建问卷
+        var questionnaireEditorTpl = document.querySelector('#tpl-questionnaire-editor').innerHTML;
+        var questionPreviewTpl = document.querySelector('#tpl-question-preview').innerHTML;
+        var qnEditor = CreateQuestionnaire(questionnaireEditorTpl, questionPreviewTpl);
+        var qnEditorContainer = document.querySelector('#j-editor-container');
+        qnEditorContainer.innerHTML = "";
+        qnEditorContainer.appendChild(qnEditor.el);
+    </script>
+</body>
+
+</html>

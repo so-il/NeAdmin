@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="Content/Tools/neui-extend/neui.extend.css" />
+    <link rel="stylesheet" href="Content/Tools/NeAdmin/neadmin.css" />
+    <link rel="stylesheet" href="Content/Tools/NeAdmin/themes/dark.css" id="themeColor" />
+</head>
+
+<body>
+    <section class="neadmin-main" ne-role="neadmin-main">
+        <header class="neadmin-header">
+            <nav class="neadmin-topbar">
+                <div class="neadmin-topbar-left">
+                    <img class="neadmin-logo" src="/Content/Images/logo.png" />
+                </div>
+                <div class="neadmin-topbar-right">
+                    <ul class="ne-toolbar padding-right-15">
+                        <li>
+                            <a class="ne-toolbar-item" ne-tap="show:#spotlight">
+                                <i class="ne-icon-magnifier"></i>
+                            </a>
+                        </li>
+                        <li class="ne-popover-static">
+                            <a class="ne-toolbar-item">
+                                <i class="ne-icon-bell"></i>
+                            </a>
+                            <div class="ne-bubble ne-bubble-alignright ne-bubble-directiondown bordered" style="width: 270px;">
+                                <div class="ne-bubble-content">
+                                    <div class="ne-panel border-none border-square" ne-role="panel">
+                                        <div class="ne-panel-header border-none">
+                                            <div class="header-title align-left">
+                                                <span class="size-small">0条未读通知</span>
+                                            </div>
+                                            <div class="header-actions">
+                                                <a class="action-link size-small">查看全部</a>
+                                            </div>
+                                        </div>
+                                        <div class="ne-panel-body">
+                                            <div class="align-center padding-20">
+                                                <i class="ne-icon-drawer grey" style="font-size:3em;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="ne-toolbar-item" ne-tap="show:#j-drawer-fromright">
+                                <i class="ne-icon-drawer"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="ne-toolbar-item" href="javascript:;" onclick="Ne.acts('.neadmin-setting').show();">
+                                <i class="ne-icon-equalizer"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="ne-toolbar-spliter"></span>
+                        </li>
+                        <li class="ne-popover-static">
+                            <a class="ne-toolbar-item">
+                                <span class="neadmin-username" id="j-usrname">超级管理员</span>
+                                <img class="neadmin-avatar" src="/Content/Images/icon-user.svg" />
+                            </a>
+                            <div class="ne-bubble ne-bubble-alignright ne-bubble-directiondown bordered">
+                                <div class="ne-bubble-content">
+                                    <ul class="ne-list list-usertool">
+                                        <li>
+                                            <a href="javascript:;" class="ne-cell">
+                                                <span class="ne-cell-left">
+                                                    <i class="ne-icon-user"></i>
+                                                </span>
+                                                <span class="ne-cell-center">个人中心</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="ne-cell">
+                                                <span class="ne-cell-left">
+                                                    <i class="ne-icon-setting"></i>
+                                                </span>
+                                                <span class="ne-cell-center">账号设置</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="ne-cell">
+                                                <span class="ne-cell-left">
+                                                    <i class="ne-icon-info-o"></i>
+                                                </span>
+                                                <span class="ne-cell-center">帮助中心</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="ne-cell" onclick="NeAdmin.logout();">
+                                                <span class="ne-cell-left">
+                                                    <i class="ne-icon-logout"></i>
+                                                </span>
+                                                <span class="ne-cell-center">退出登录</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav class="neadmin-navbar"></nav>
+        </header>
+        <div class="neadmin-body">
+            <aside class="neadmin-aside"></aside>
+            <main class="neadmin-content"></main>
+        </div>
+        <footer class="neadmin-footer"></footer>
+        <div class="ne-drawer ne-drawer-fromright" id="j-drawer-fromright" ne-role="drawer">
+            <div class="ne-mask" ne-tap="hide:drawer"></div>
+            <div class="ne-drawer-container" style="width: 400px;z-index: 1000;">
+                <div class="ne-panel border-none" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>Message</span>
+                        </div>
+                        <div class="header-actions">
+                            <a class="block" ne-tap="hide:drawer">
+                                <i class="ne-icon-delete"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body padding-0">
+                        <div class="ne-chat">
+                            <ul class="ne-chat-msglist">
+                                <li class="ne-chat-tips">
+                                    <span>14:53</span>
+                                </li>
+                                <li class="ne-chat-msg align-left">
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-light border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                    <div class="msg">
+                                        ( ・◇・)？
+                                    </div>
+                                </li>
+                                <li class="ne-chat-msg align-right">
+                                    <div class="msg">
+                                        是胃癌，晚期，还有两个月...
+                                    </div>
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-blue border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="ne-chat-msg align-left">
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-light border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                    <div class="msg">
+                                        医生，讲真？
+                                    </div>
+                                </li>
+                                <li class="ne-chat-tips">
+                                    <span>12:00</span>
+                                </li>
+                                <li class="ne-chat-msg align-left">
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-light border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                    <div class="msg">
+                                        <span class="active">
+                                            <i class="ne-icon-ripple"></i>
+                                        </span>6'
+                                    </div>
+                                </li>
+                                <li class="ne-chat-msg align-right">
+                                    <div class="msg">
+                                        <i class="ne-icon-meh-f yellow-5 size-x-large" style="opacity: 1;"></i>
+                                    </div>
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-blue border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div id="j-chatcontroller" class="ne-chat-controller">
+                                <div class="ne-mask transparent none clickable" onclick="hideInputPicker();"></div>
+                                <div class="ne-chat-inputbar ne-cell">
+                                    <div class="ne-cell-left">
+                                        <i class="ne-icon-microphone ne-chat-inputbar-control clickable" onclick="showInputPicker('speech');"></i>
+                                    </div>
+                                    <div class="ne-cell-center">
+                                        <div class="ne-chat-inputfield" contenteditable="true"></div>
+                                    </div>
+                                    <div class="ne-cell-right">
+                                        <i class="ne-icon-smile ne-chat-inputbar-control clickable margin-right-5" onclick="showInputPicker('emo');"></i>
+                                        <i class="ne-icon-plus-o ne-chat-inputbar-control clickable" onclick="showInputPicker('file');"></i>
+                                    </div>
+                                </div>
+                                <div id="j-emopicker" class="ne-chat-inputpicker">
+                                    <div class="ne-grids border-top col8 padding-bottom-20 padding-top-20">
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-meh-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-smile-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-frown-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-heart-f red size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-star-f orange size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-meh-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-smile-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-frown-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-heart-f red size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-star-f orange size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-meh-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-smile-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-frown-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-heart-f red size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-star-f orange size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-meh-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-smile-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-frown-f yellow size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-heart-f red size-x-large"></i>
+                                            </div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-star-f orange size-x-large"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j-filepicker" class="ne-chat-inputpicker">
+                                    <div class="ne-grids border-top col3 padding-bottom-20 padding-top-20">
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-pic size-double"></i>
+                                            </div>
+                                            <div class="ne-grid-label text-meta">图片</div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-camera size-double"></i>
+                                            </div>
+                                            <div class="ne-grid-label text-meta">拍摄</div>
+                                        </div>
+                                        <div class="ne-grid">
+                                            <div class="ne-grid-icon">
+                                                <i class="ne-icon-doc size-double"></i>
+                                            </div>
+                                            <div class="ne-grid-label text-meta">体检报告</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="j-speechpicker" class="ne-chat-inputpicker">
+                                    <div class="align-center padding-20 margin-20 size-xx-large">
+                                        <i class="ne-icon-microphone ne-flaticon border-circle bg-cyan"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-dialog" id="spotlight" ne-role="dialog">
+            <div class="ne-mask" ne-tap="hide:dialog"></div>
+            <div class="ne-dialog-container">
+                <div class="ne-panel ne-card border-none" style="width: 500px;" ne-role="panel">
+                    <div class="ne-cell size-x-large">
+                        <div class="ne-cell-left">
+                            <i class="ne-icon-magnifier"></i>
+                        </div>
+                        <div class="ne-cell-center">
+                            <input class="ne-input w100 border-none" placeholder="快捷搜索" />
+                        </div>
+                        <div class="ne-cell-right">
+                            <a ne-tap="hide:dialog"><i class="ne-icon-delete"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="neadmin-login" ne-role="neadmin-login">
+        <div class="neadmin-login-container">
+            <form class="neadmin-login-form">
+                <div class="neadmin-login-form-header">
+                    <img class="neadmin-logo" src="/Content/Images/logo.png" />
+                </div>
+                <div class="ne-cell">
+                    <div class="ne-input_withicon_left">
+                        <i class="ne-icon-user ne-input-icon"></i>
+                        <input class="ne-input w100" type="text" autocomplete="off" placeholder="请输入账号" name="username">
+                    </div>
+                </div>
+                <div class="ne-cell">
+                    <div class="ne-input_withicon_left">
+                        <i class="ne-icon-key ne-input-icon"></i>
+                        <input class="ne-input w100" type="password" autocomplete="off" placeholder="请输入密码" name="password">
+                    </div>
+                </div>
+                <div class="ne-cell">
+                    <span class="ne-cell-left">
+                        <input type="checkbox" id="login_checkbox_rememberme" name="login_checkbox_rememberme" value="1">
+                        <label class="ne-checkbox" for="login_checkbox_rememberme"></label>
+                    </span>
+                    <span class="ne-cell-center grey-7">
+                        记住我
+                    </span>
+                </div>
+                <div class="ne-cell">
+                    <button type="submit" class="ne-btn ne-btn-danger block">登录</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="neadmin-start" ne-role="neadmin-start">
+        <div class="neadmin-start-container">
+            <div class="neadmin-start-title">WELCOME！</div>
+        </div>
+    </section>
+
+    <section class="neadmin-setting" ne-role="neadmin-setting">
+        <div class="neadmin-setting-closebtn" ne-tap="hide:neadmin-setting">
+            <i class="ne-icon-delete"></i>
+        </div>
+        <div class="neadmin-setting-container">
+            <div class="ne-row inline-block" style="width: 700px;">
+                <div class="ne-col-12">
+                    <div class="neadmin-setting-field">
+                        <label>选择风格：</label>
+                        <div>
+                            <div class="checkbox-theme-wrap">
+                                <input type="radio" id="checkbox_theme_dark" name="checkbox_theme" checked value="dark" onchange="NeAdmin.changeTheme()">
+                                <label class="ne-checkbox border-circle checkbox-theme dark" for="checkbox_theme_dark"></label>
+                            </div>
+                            <div class="checkbox-theme-wrap">
+                                <input type="radio" id="checkbox_theme_blue" name="checkbox_theme" value="blue" onchange="NeAdmin.changeTheme()">
+                                <label class="ne-checkbox border-circle checkbox-theme blue" for="checkbox_theme_blue"></label>
+                            </div>
+                            <div class="checkbox-theme-wrap">
+                                <input type="radio" id="checkbox_theme_green" name="checkbox_theme" value="green" onchange="NeAdmin.changeTheme()">
+                                <label class="ne-checkbox border-circle checkbox-theme green" for="checkbox_theme_green"></label>
+                            </div>
+                            <div class="checkbox-theme-wrap">
+                                <input type="radio" id="checkbox_theme_grey" name="checkbox_theme" value="grey" onchange="NeAdmin.changeTheme()">
+                                <label class="ne-checkbox border-circle checkbox-theme grey" for="checkbox_theme_grey"></label>
+                            </div>
+                            <div class="checkbox-theme-wrap">
+                                <input type="radio" id="checkbox_theme_light" name="checkbox_theme" value="light" onchange="NeAdmin.changeTheme()">
+                                <label class="ne-checkbox border-circle checkbox-theme light" for="checkbox_theme_light"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="neadmin-setting-field">
+                        <label>侧栏是否固定：</label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select id="themesetting-sidebarfixed" class="ne-select" ne-role="picker" onchange="NeAdmin.fixedSidebar();">
+                                    <option value="1">固定</option>
+                                    <option value="0" selected>不固定</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="neadmin-setting-field">
+                        <label>侧栏是否靠边：</label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select id="themesetting-sidebarcling" class="ne-select" ne-role="picker" onchange="NeAdmin.clingSidebar();">
+                                    <option value="1">靠边</option>
+                                    <option value="0" selected>不靠边</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="neadmin-setting-field">
+                        <label>侧栏是否收起：</label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select id="themesetting-sidebarcollapse" class="ne-select" ne-role="picker" onchange="NeAdmin.toggleSidebar();">
+                                    <option value="1">收起</option>
+                                    <option value="0" selected>不收起</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="neadmin-setting-field">
+                        <label>顶部导航是否紧凑：</label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <select id="themesetting-headerfixed" class="ne-select" ne-role="picker" onchange="NeAdmin.fixedHeader();">
+                                    <option value="1" selected>紧凑</option>
+                                    <option value="0">不紧凑</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--load scripts-->
+    <script src="Content/Tools/neui/neui.js"></script>
+    <script src="Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="Content/Tools/NeAdmin/neadmin.js"></script>
+    <script src="Content/Scripts/app.js"></script>
+    <script>
+        App.init();
+    </script>
+</body>
+
+</html>

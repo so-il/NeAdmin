@@ -1,0 +1,682 @@
+/***************************************************************** 
+ * @ reset
+ * Description: General reset
+*******************************************************************/
+
+html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.42858;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-transition: background 1s cubic-bezier(.075, .82, .165, 1);
+    transition: background 1s cubic-bezier(.075, .82, .165, 1);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #e9ecf3;
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5),
+(min-resolution: 2dppx) {
+    /* For Retina */
+    body {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+}
+
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+/*****************  neadmin-start  ********************/
+
+.neadmin-start {
+    display: table;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2f373e;
+    z-index: 10000;
+}
+
+.neadmin-start-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.neadmin-start-title {
+    display: inline-block;
+    position: relative;
+    padding: 1.4rem 4.2rem;
+    padding-right: 3.1rem;
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 1.1rem;
+    text-transform: uppercase;
+    -webkit-transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 600ms cubic-bezier(0.77, 0, 0.175, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.neadmin-start-title:before,
+.neadmin-start-title:after {
+    content: '';
+    position: absolute;
+    -webkit-transition: inherit;
+    transition: inherit;
+    z-index: -1;
+    top: 0;
+    width: 0;
+    height: 100%;
+}
+
+.neadmin-start-title:before {
+    left: 0;
+    border: 1px solid #fff;
+    border-left: 0;
+    border-right: 0;
+}
+
+.neadmin-start-title:after {
+    right: 0;
+}
+
+.neadmin-start-title.showanimate {
+    color: #000;
+    -webkit-transition-delay: .5s;
+    transition-delay: .5s;
+}
+
+.neadmin-start-title.showanimate:before {
+    width: 100%;
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.neadmin-start-title.showanimate:after {
+    width: 100%;
+    background: #fff;
+    -webkit-transition-delay: .4s;
+    transition-delay: .4s;
+}
+
+/*animation*/
+
+.neadmin-start {
+    opacity: 0;
+    display: none;
+}
+
+.neadmin-start-in.neadmin-start,
+.neadmin-start-out.neadmin-start {
+    display: table;
+}
+
+.neadmin-start-in,
+.neadmin-start-out {
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-duration: 250ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+}
+
+.neadmin-start-in {
+    opacity: 1;
+}
+
+.neadmin-start-out {
+    -webkit-animation-name: fadeout;
+    animation-name: fadeout;
+}
+
+/*****************  setting  ********************/
+
+.neadmin-setting {
+    display: table;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(47, 55, 62, 0.95);
+    color: #fff;
+    z-index: 10000;
+}
+
+.neadmin-setting-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.neadmin-setting-closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.neadmin-setting-closebtn::before {
+    content: '';
+    width: 160px;
+    height: 160px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.26);
+    position: absolute;
+    border-radius: 50%;
+    top: -80px;
+    right: -80px;
+}
+
+.neadmin-setting-closebtn i {
+    font-size: 3em;
+    color: #e9ecf3;
+}
+
+.neadmin-setting-closebtn:hover::before {
+    background: rgba(255, 255, 255, 0.36);
+}
+
+.neadmin-setting-closebtn:active::before {
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.neadmin-setting-closebtn:active i {
+    color: #c5c5c5;
+}
+
+.checkbox-theme {
+    width: 5em;
+    height: 5em;
+    border: 5px solid #fff;
+    cursor: pointer;
+}
+
+.checkbox-theme.ne-checkbox::after {
+    background-size: 3em;
+}
+
+.checkbox-theme.dark {
+    background-color: #333438;
+}
+
+.checkbox-theme.blue {
+    background-color: #4d9dfc;
+}
+
+.checkbox-theme.green {
+    background-color: #53d769;
+}
+
+.checkbox-theme.grey {
+    background-color: #697380;
+}
+
+.checkbox-theme.light {
+    background-color: #e9e9e9;
+}
+
+:checked+.ne-checkbox.checkbox-theme {
+    border-style: dotted;
+}
+
+.checkbox-theme-wrap {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.checkbox-theme-wrap+.checkbox-theme-wrap {
+    margin-left: 70px;
+}
+
+/*animation*/
+
+.neadmin-setting {
+    opacity: 0;
+    display: none;
+}
+
+.neadmin-setting-in.neadmin-setting,
+.neadmin-setting-out.neadmin-setting {
+    display: table;
+}
+
+.neadmin-setting-in,
+.neadmin-setting-out {
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-duration: 250ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-duration: 250ms;
+}
+
+.neadmin-setting-in {
+    -webkit-animation-name: fadein;
+    animation-name: fadein;
+}
+
+.neadmin-setting-out {
+    -webkit-animation-name: fadeout;
+    animation-name: fadeout;
+}
+
+.neadmin-setting-field {
+    padding: 25px;
+}
+
+.neadmin-setting-field>label {
+    display: block;
+    color: #888888;
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.neadmin-setting-field>label+div {
+    text-align: left;
+}
+
+.neadmin-setting-field .ne-select {
+    width: 100%;
+    border-color: #9e9e9e;
+    color: #cacaca;
+    font-size: 1.4em;
+}
+
+.neadmin-setting-field .ne-input_withicon_right {
+    background-color: #686a6b;
+}
+
+.neadmin-setting-field .ne-input-icon {
+    color: #cacaca !important;
+}
+
+/*****************   login  ********************/
+
+.neadmin-login {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: table;
+    background-color: #2f373e;
+    z-index: 1;
+}
+
+.neadmin-login-container {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.neadmin-login-form {
+    margin: 0 auto;
+    width: 360px;
+    background-color: #3a4554;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.neadmin-login-form .ne-input {
+    background-color: #303a48;
+    border: none;
+    color: #697687;
+    height: 40px;
+    padding-left: 45px !important;
+}
+
+.neadmin-login-form .ne-input-icon {
+    color: #697687;
+}
+
+.neadmin-login-form .ne-btn-danger {
+    background-color: #019dc7;
+    border-color: #019dc7;
+}
+
+.neadmin-login-form .ne-checkbox {
+    background-color: #313a47;
+    color: #636f82;
+}
+
+.neadmin-login-form-header {
+    padding: 40px;
+    margin: -25px -25px 20px;
+    background: #323d4b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/*animation*/
+
+.neadmin-login {
+    opacity: 0;
+    display: none;
+}
+
+.neadmin-login-in.neadmin-login,
+.neadmin-login-out.neadmin-login {
+    display: table;
+}
+
+.neadmin-login-in,
+.neadmin-login-out {
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-duration: 300ms;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    animation-duration: 300ms;
+}
+
+.neadmin-login-in {
+    -webkit-animation-name: fadein;
+    animation-name: fadein;
+    opacity: 1;
+}
+
+.neadmin-login-out {
+    -webkit-animation-name: fadeout;
+    animation-name: fadeout;
+}
+
+/*****************  page layout  ********************/
+
+.neadmin-main {
+    z-index: 0;
+    position: relative;
+    display: none;
+}
+
+.neadmin-main.neadmin-main-in {
+    display: block;
+}
+
+.neadmin-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #2f373e;
+}
+
+.neadmin-body {
+    position: relative;
+    top: 85px;
+}
+
+.neadmin-aside {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 20px 0 20px 20px;
+    z-index: 1;
+}
+
+.neadmin-aside::-webkit-scrollbar,
+.neadmin-aside>.ne-sidebar-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.neadmin-content {
+    position: relative;
+    padding: 0;
+    z-index: 0;
+}
+
+.neadmin-aside.fixed {
+    position: fixed;
+    top: 83px;
+}
+
+.neadmin-aside.fixed.cling {
+    overflow: auto;
+}
+
+.neadmin-aside.collapse {
+    overflow: visible !important;
+}
+
+.neadmin-aside.cling {
+    padding: 0;
+    background-color: #55616f;
+}
+
+.neadmin-aside.fixed:not(.cling):not(.collapse)>.ne-sidebar-wrap {
+    background-color: #55616f;
+    border-radius: 0 0 4px 4px;
+    max-height: 93%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.neadmin-aside.cling .ne-sidebar-toggler,
+.neadmin-aside.cling .ne-sidebar-wrap,
+.neadmin-aside.cling .ne-sidebar {
+    border-radius: 0;
+}
+
+.neadmin-aside {
+    width: 0;
+    opacity: 1;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+.neadmin-aside.block {
+    width: 232px;
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.neadmin-aside+.neadmin-content {
+    margin-left: 0;
+    -webkit-transition: all 200ms ease;
+    transition: all 200ms ease;
+}
+
+.neadmin-aside:not(.block)+.neadmin-content {
+    margin-left: 0 !important;
+}
+
+.neadmin-aside.block+.neadmin-content {
+    margin-left: 232px;
+}
+
+.neadmin-aside.collapse {
+    width: 70px;
+}
+
+.neadmin-aside.collapse+.neadmin-content {
+    margin-left: 70px;
+}
+
+.neadmin-aside.cling {
+    width: 200px;
+}
+
+.neadmin-aside.cling+.neadmin-content {
+    margin-left: 200px;
+}
+
+.neadmin-aside.collapse.cling {
+    width: 50px;
+}
+
+.neadmin-aside.collapse.cling+.neadmin-content {
+    margin-left: 50px;
+}
+
+.neadmin-view {
+    display: none;
+}
+
+.neadmin-view.active {
+    display: block;
+}
+
+.neadmin-view iframe {
+    display: block;
+    border: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+/**
+ * @topbar
+**/
+
+.neadmin-topbar {
+    display: block;
+    position: relative;
+    width: 100%;
+}
+
+.neadmin-topbar>.neadmin-topbar-left,
+.neadmin-topbar>.neadmin-topbar-center,
+.neadmin-topbar>.neadmin-topbar-right {
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 1%;
+}
+
+.neadmin-topbar>.neadmin-topbar-center {
+    width: 100%;
+}
+
+.neadmin-topbar>.neadmin-topbar-right {
+    text-align: right;
+}
+
+.neadmin-logo {
+    vertical-align: middle;
+    margin: 0 20px;
+    height: 27px;
+}
+
+.neadmin-header .neadmin-logo {
+    height: 20px;
+}
+
+.neadmin-avatar {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    vertical-align: middle;
+    background-color: #717171;
+}
+
+.neadmin-username {
+    vertical-align: middle;
+    margin-right: 5px;
+    display: inline-block;
+    font-size: 13px;
+}
+
+/***********/
+
+.neadmin-pagestatus {
+    text-align: center;
+}
+
+.neadmin-pagestatus-content {
+    width: 720px;
+    margin-top: 70px;
+    display: inline-block;
+}
+
+.neadmin-pagestatus img {
+    width: 400px;
+    margin-right: 2em;
+}
+
+.neadmin-pagestatus strong {
+    font-size: 8em;
+    font-weight: lighter;
+    color: #bac6d1;
+    line-height: 1;
+}
+
+.neadmin-pagestatus p {
+    font-size: 1.5em;
+    margin-top: 1em;
+    white-space: nowrap;
+    color: #8099a9;
+}
+
+/**/
+
+.neadmin-header-fixed .neadmin-navbar {
+    position: absolute;
+    top: 0;
+    left: 200px;
+}
+
+.neadmin-header-fixed .ne-menubar-top>li>a.ne-menu-link {
+    padding: 11px 20px;
+}
+
+.neadmin-header-fixed .ne-menubar-top>li::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-color: #424b55;
+    transform: rotate(30deg) skew(-30deg);
+    border-bottom-right-radius: 2px;
+    top: auto;
+    bottom: -6px;
+    left: 50%;
+    right: auto;
+    margin-left: -7px;
+    visibility: hidden;
+}
+
+.neadmin-header-fixed .ne-menubar-top>li.active::after {
+    visibility: visible;
+}

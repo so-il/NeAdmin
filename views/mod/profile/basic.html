@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+    <style>
+        .tabpanel {
+            display: none;
+        }
+
+        .tabpanel.active {
+            display: block;
+        }
+
+        .panel-info {
+            border: 0;
+            border-radius: 0;
+        }
+
+        .panel-info .ne-panel-header {
+            border: 0;
+        }
+
+        .ne-tabs-top .ne-tab {
+            padding: 1.2em 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ne-panel" ne-role="tabview">
+        <div class="ne-panel-header padding-0 padding-left-20 padding-right-20">
+            <div class="header-title">
+                <span>xxx的个人档案</span>
+            </div>
+            <div class="header-actions">
+                <div class="ne-tabs ne-tabs-top fixed" style="border-bottom: 0;" ne-role="tablist">
+                    <div class="ne-tab active" ne-tap="toggle:#tab_top_fixed_style_1" ne-role="tab">
+                        <span>个人首页</span>
+                    </div>
+                    <div class="ne-tab" ne-tap="toggle:#tab_top_fixed_style_2" ne-role="tab">
+                        <span>门诊病历</span>
+                    </div>
+                    <div class="ne-tab" ne-tap="toggle:#tab_top_fixed_style_3" ne-role="tab">
+                        <span>住院病历</span>
+                    </div>
+                    <div class="ne-tab" ne-tap="toggle:#tab_top_fixed_style_4" ne-role="tab">
+                        <span>检验检查</span>
+                    </div>
+                    <div class="ne-tab" ne-tap="toggle:#tab_top_fixed_style_5" ne-role="tab">
+                        <span>问卷量表</span>
+                    </div>
+                    <div class="ne-tab" ne-tap="toggle:#tab_top_fixed_style_6" ne-role="tab">
+                        <span>随访记录</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div id="tab_top_fixed_style_1" class="tabpanel active" ne-role="tabpanel">
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-body">
+                        <div class="ne-row" style="padding-bottom: 40px;border-bottom: 1px solid #eee;">
+                            <div class="ne-col-3 align-center">
+                                <img style="width: 150px; border-radius: 50%;background: #f9f7f7;margin-top: 30px;" src="/Content/Images/icon-user.svg">
+                            </div>
+                            <div class="ne-col-9">
+                                <div class="ne-row">
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">姓名：</span>
+                                            </label>
+                                            <div>李小琳</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">性别：</span>
+                                            </label>
+                                            <div>女</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">民族：</span>
+                                            </label>
+                                            <div>汉</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">用户ID：</span>
+                                            </label>
+                                            <div>327489</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">QQ：</span>
+                                            </label>
+                                            <div>587658477</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">微信号：</span>
+                                            </label>
+                                            <div>18318337485</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">生日：</span>
+                                            </label>
+                                            <div>1993-05-01</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">注册时间：</span>
+                                            </label>
+                                            <div>2016-11-11</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">证件号：</span>
+                                            </label>
+                                            <div>440582199305016714</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">用户来源：</span>
+                                            </label>
+                                            <div>微信注册</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">现住址：</span>
+                                            </label>
+                                            <div>深圳福田梅林</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">邮编：</span>
+                                            </label>
+                                            <div>519000</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">户籍城市：</span>
+                                            </label>
+                                            <div>深圳</div>
+                                        </div>
+                                    </div>
+                                    <div class="ne-col-4">
+                                        <div class="ne-field">
+                                            <label>
+                                                <span class="w5">教育水平：</span>
+                                            </label>
+                                            <div>本科</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 标签 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>标签</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <div class="ne-field padding-0">
+                            <label>
+                                <span>标签：</span>
+                            </label>
+                            <div>
+                                耳鼻喉科，喉癌，下咽癌
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 基本情况 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>基本情况</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th">身高</th>
+                                <th class="ne-table-th">体重</th>
+                                <th class="ne-table-th">BMI</th>
+                                <th class="ne-table-th">神志</th>
+                                <th class="ne-table-th">合作程度</th>
+                                <th class="ne-table-th">吸烟年数</th>
+                                <th class="ne-table-th">饮酒年数</th>
+                                <th class="ne-table-th">空气污染指数</th>
+                            </tr>
+                            <tr>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">EB病毒感染</th>
+                                <th class="ne-table-th">性激素水平</th>
+                                <th class="ne-table-th">体内微量元素缺乏</th>
+                                <th class="ne-table-th">癌前期病变</th>
+                                <th class="ne-table-th">放射治疗</th>
+                                <th class="ne-table-th">癌基因的激活</th>
+                                <th class="ne-table-th">抗癌基因的失活</th>
+                                <th class="ne-table-th">人乳头状瘤病毒（HPV）感染</th>
+                            </tr>
+                            <tr>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">目前工作或学习单位</th>
+                                <th class="ne-table-th">退休前工作单位</th>
+                                <th class="ne-table-th">职业（包括离退休前）</th>
+                                <th class="ne-table-th">医疗费用来源</th>
+                                <th class="ne-table-th">代理人姓名</th>
+                                <th class="ne-table-th">受访者与代理人关系</th>
+                                <th class="ne-table-th">户籍类型</th>
+                                <th class="ne-table-th">教育水平</th>
+                            </tr>
+                            <tr>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 家属或联系人 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>家属或联系人</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th">姓名</th>
+                                <th class="ne-table-th">手机号码</th>
+                                <th class="ne-table-th">身份证</th>
+                                <th class="ne-table-th">QQ</th>
+                                <th class="ne-table-th">微信</th>
+                            </tr>
+                            <tr>
+                                <td>大梨</td>
+                                <td>180****1849</td>
+                                <td>43011112987766XXXX</td>
+                                <td>5845454545</td>
+                                <td>Win8744</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 主要症状 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>主要症状</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th">咽喉</th>
+                                <th class="ne-table-th">鼻</th>
+                                <th class="ne-table-th">耳</th>
+                                <th class="ne-table-th">颅底</th>
+                            </tr>
+                            <tr>
+                                <td>未获取</td>
+                                <td>未获取</td>
+                                <td>未获取</td>
+                                <td>未获取</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 既往病史 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>既往病史</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th w10">内容</th>
+                                <th class="ne-table-th">详情</th>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">其他病症</th>
+                                <td>暂无</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">放射治疗史</th>
+                                <td>暂无</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">化学治疗史</th>
+                                <td>暂无</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 家族史 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>家族史</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <span>（无）</span>
+                    </div>
+                </div>
+                <!-- 常规检查 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>常规检查</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th">送检科室</th>
+                                <th class="ne-table-th">送检医生</th>
+                                <th class="ne-table-th">送检时间</th>
+                                <th class="ne-table-th">门诊卡号或住院号</th>
+                                <th class="ne-table-th">检验检查项目</th>
+                                <th class="ne-table-th">来源</th>
+                                <th class="ne-table-th">操作</th>
+                            </tr>
+                            <tr>
+                                <td>耳鼻喉科</td>
+                                <td>王医生</td>
+                                <td>2017-07-19 14:48:38</td>
+                                <td>18000000000</td>
+                                <td>耳鼻咽喉专科检查</td>
+                                <td>导入</td>
+                                <td>查看</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 解剖部位 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>解剖部位</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th">下咽</th>
+                                <th class="ne-table-th">口咽</th>
+                                <th class="ne-table-th">鼻咽</th>
+                                <th class="ne-table-th">喉</th>
+                                <th class="ne-table-th">鼻</th>
+                                <th class="ne-table-th">耳</th>
+                                <th class="ne-table-th">颌面</th>
+                                <th class="ne-table-th">颅底</th>
+                            </tr>
+                            <tr>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">T分期</th>
+                                <th class="ne-table-th">N分期</th>
+                                <th class="ne-table-th">临床分期</th>
+                                <th class="ne-table-th"></th>
+                                <th class="ne-table-th"></th>
+                                <th class="ne-table-th"></th>
+                                <th class="ne-table-th"></th>
+                                <th class="ne-table-th"></th>
+                            </tr>
+                            <tr>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td>未填写</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- 治疗选择 -->
+                <div class="ne-panel panel-info" ne-role="panel">
+                    <div class="ne-panel-header">
+                        <div class="header-title">
+                            <span>治疗选择</span>
+                        </div>
+                    </div>
+                    <div class="ne-panel-body">
+                        <table class="ne-table">
+                            <tr>
+                                <th class="ne-table-th w10">内容</th>
+                                <th class="ne-table-th">详情</th>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">放射治疗</th>
+                                <td>暂无</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">化学治疗</th>
+                                <td>暂无</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">手术治疗（咽喉）</th>
+                                <td>喉显微或内镜激光（CO2）手术</td>
+                            </tr>
+                            <tr>
+                                <th class="ne-table-th">手术治疗（鼻）</th>
+                                <td>经鼻内镜鼻窦伴颅底病损切除术</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div id="tab_top_fixed_style_2" class="tabpanel" ne-role="tabpanel">
+            </div>
+            <div id="tab_top_fixed_style_3" class="tabpanel" ne-role="tabpanel">
+            </div>
+            <div id="tab_top_fixed_style_4" class="tabpanel" ne-role="tabpanel">
+            </div>
+            <div id="tab_top_fixed_style_5" class="tabpanel" ne-role="tabpanel">
+            </div>
+            <div id="tab_top_fixed_style_6" class="tabpanel" ne-role="tabpanel">
+            </div>
+        </div>
+    </div>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+</body>
+
+</html>

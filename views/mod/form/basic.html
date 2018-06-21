@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+</head>
+
+<body>
+    <form class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>基础表单</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="hr-break">
+                <span>分组一</span>
+            </div>
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">日期：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right">
+                                <input type="text" data-type="date" class="ne-input w100" placeholder="0000-00-00" ne-role="picker" ne-tap="show:picker">
+                                <label class="ne-icon-calender ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">选择：</span>
+                        </label>
+                        <div>
+                            <div class="ne-input_withicon_right bg-white">
+                                <select class="ne-select">
+                                    <option value="1">选项一</option>
+                                    <option value="2">选项二</option>
+                                    <option value="4">选项三</option>
+                                </select>
+                                <label class="ne-icon-arrow-down ne-input-icon"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">单选：</span>
+                        </label>
+                        <div>
+                            <div class="inline-block margin-right-15" style="line-height: 34px;">
+                                <input type="checkbox" name="ccc" value="1" id="ccc1">
+                                <label class="ne-checkbox" for="ccc1"></label>
+                                <span class="text-tagged">选项一</span>
+                            </div>
+                            <div class="inline-block margin-right-15">
+                                <input type="checkbox" name="ccc" value="2" id="ccc2">
+                                <label class="ne-checkbox" for="ccc2"></label>
+                                <span class="text-tagged">选项二</span>
+                            </div>
+                            <div class="inline-block">
+                                <input type="checkbox" name="ccc" value="3" id="ccc3">
+                                <label class="ne-checkbox" for="ccc3"></label>
+                                <span class="text-tagged">选项二</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">单选：</span>
+                        </label>
+                        <div>
+                            <div class="inline-block margin-right-15" style="line-height: 34px;">
+                                <input type="radio" name="rrr" value="1" id="rrr1">
+                                <label class="ne-radio" for="rrr1"></label>
+                                <span class="text-tagged">选项一</span>
+                            </div>
+                            <div class="inline-block  margin-right-15">
+                                <input type="radio" name="rrr" value="2" id="rrr2">
+                                <label class="ne-radio" for="rrr2"></label>
+                                <span class="text-tagged">选项二</span>
+                            </div>
+                            <div class="inline-block">
+                                <input type="radio" name="rrr" value="2" id="rrr3">
+                                <label class="ne-radio" for="rrr3"></label>
+                                <span class="text-tagged">选项二</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label class="align-middle">
+                            <span class="w6">开关：</span>
+                        </label>
+                        <div>
+                            <div style="line-height: 34px;">
+                                <input type="checkbox" id="checkbox_switch" checked="">
+                                <label class="ne-switch align-middle" for="checkbox_switch"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">数量选择：</span>
+                        </label>
+                        <div>
+                            <div class="ne-numbox" ne-role="numbox">
+                                <button class="ne-btn ne-btn-default" type="button" ne-tap="minus:numbox">-</button>
+                                <input type="number" class="ne-input" min="1" max="20" step="2" value="1">
+                                <button class="ne-btn ne-btn-default" type="button" ne-tap="plus:numbox">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="hr-break">
+                <span>分组二</span>
+            </div>
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">纯数字：</span>
+                        </label>
+                        <div>
+                            <input type="number" class="ne-input" placeholder="只允许纯数字" data-validate="num">
+                        </div>
+                    </div>
+
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">组合输入框：</span>
+                        </label>
+                        <div>
+                            <div class="ne-cell ne-inputgroup">
+                                <div class="ne-cell-center">
+                                    <input type="text" class="ne-input">
+                                </div>
+                                <div class="ne-cell-right">
+                                    <div class="w4 ne-input_withicon_right bg-light">
+                                        <select class="ne-select">
+                                            <option value="1">天</option>
+                                            <option value="2">年</option>
+                                            <option value="3">月</option>
+                                        </select>
+                                        <label class="ne-icon-arrow-down ne-input-icon"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">多行文本：</span>
+                        </label>
+                        <div>
+                            <textarea class="ne-textarea" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">文本：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input" placeholder="文本">
+                        </div>
+                    </div>
+                    <div class="ne-field">
+                            <label class="align-middle">
+                                <span class="w6">带按钮：</span>
+                            </label>
+                            <div>
+                                <div class="ne-cell ne-inputgroup">
+                                    <div class="ne-cell-left">
+                                        <div class="w6 ne-input_withicon_right bg-light">
+                                            <select class="ne-select">
+                                                <option value="1">选项一</option>
+                                                <option value="2">选项二</option>
+                                            </select>
+                                            <label class="ne-icon-arrow-down ne-input-icon"></label>
+                                        </div>
+                                    </div>
+                                    <div class="ne-cell-center">
+                                        <input type="text" class="ne-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="align-middle w1">
+                                <button class="ne-btn ne-btn-default margin-left-10 space-nowrap">验证</button>
+                            </div>
+                        </div>
+                    <div class="ne-field">
+                        <label>
+                            <span class="w6">限字数：</span>
+                        </label>
+                        <div>
+                            <div class="ne-textarea-wrapper">
+                                <textarea class="ne-textarea" placeholder="120字，相关输入提示" rows="4" maxlength="120"></textarea>
+                                <div class="ne-textarea-count">0/120</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary" type="submit">提交</button>
+            <button class="ne-btn ne-btn-default" type="reset">清除</button>
+        </div>
+    </form>
+
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+</body>
+
+</html>

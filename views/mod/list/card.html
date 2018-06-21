@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+</head>
+
+<body>
+    <div class="ne-panel bg-none">
+        <div class="ne-panel-header">
+            <div class="header-title">标准列表</div>
+            <div class="header-actions">
+                <div class="ne-btn-group" style="font-size: 13px;" ne-role="tablist">
+                    <a class="ne-btn ne-btn-info ne-btn-outline" ne-tap="toggle:tab" ne-role="tab">
+                        一个周内
+                    </a>
+                    <a class="ne-btn ne-btn-info ne-btn-outline" ne-tap="toggle:tab" ne-role="tab">
+                        一个月内
+                    </a>
+                    <a class="ne-btn ne-btn-info ne-btn-outline" ne-tap="toggle:tab" ne-role="tab">
+                        一年内
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-body" id="j-list-container">
+        </div>
+    </div>
+    <script id="tpl-listitem" type="text/template">
+        <div class="ne-col-3">
+            <div class="bg-white bordered border-round">
+                <div class="ne-cell border-bottom padding-20">
+                    <div class="ne-cell-left">
+                        <i class="inline-block align-middle iconsize-normal bg-blue border-circle"></i>
+                    </div>
+                    <div class="ne-cell-center text-excerpt">
+                        <strong class="margin-bottom-5">{title}</strong>
+                        <p class="line-clamp-3">{desc}</p>
+                    </div>
+                </div>
+                <div class="ne-btn-group fixed border-none">
+                    <a href="{href}" class="ne-btn ne-btn-default  border-none border-square">
+                        <i class="ne-icon-edit"></i>
+                        <span class="text-tagged">编辑</span>
+                    </a>
+                    <a class="ne-btn ne-btn-default  border-none border-square">
+                        <i class="ne-icon-trash"></i>
+                        <span class="text-tagged">删除</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </script>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+    <script>
+        //创建左侧列表 
+        var dl_leftList = Ne.dataList({
+            listContainer: '#j-list-container',
+            itemRender: function (record, index) {
+                var data = {
+                    title: '任务-' + record.a,
+                    desc: '在中台产品的研发过程中，会出现不同的设计规范和实现方式，但其中往往存在很多类似的页面和组件，这些类似的组件会被抽离成一套标准规范。',
+                    href:'/views/mod/profile/basic.html'
+                };
+                var tpl_listitem = document.querySelector('#tpl-listitem').innerHTML;
+                var listitem = Ne.render(tpl_listitem, data);
+                return listitem;
+            },
+            containerRender: function (lis) {
+                var container = Ne.dom.render('<div class="ne-row spaceing"></div>');
+                container.appendChild(lis);
+                return container;
+            },
+            style: {
+                'border-bottom': '1px solid #e0e0e0'
+            },
+            pageSize: 20,
+            events: {
+                onItemClick: function (item, record) {},
+                onPageRender: function (records) {}
+            }
+        });
+        //左列表加载数据
+        function leftListLoadData(searchkey) {
+            dl_leftList.loadData({
+                api: '/Followup/HealthKnowledge/ListData',
+                debug: true,
+                ajax: Ne.ajax,
+                para: {
+                    searchkey: searchkey || ''
+                }
+            });
+        }
+        //左列表搜索
+        function leftListDoSearch() {
+            var searchkey = document.querySelector('#searchkey');
+            leftListLoadData(searchkey);
+        }
+        leftListLoadData();
+    </script>
+</body>
+
+</html>

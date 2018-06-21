@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NeAdmin</title>
+    <link rel="stylesheet" href="/Content/Tools/neui/neui.css" />
+    <link rel="stylesheet" href="/Content/Tools/neui-extend/neui.extend.css" />
+</head>
+
+<body>
+    <form onsubmit="formsubmit(this);" class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>基础验证</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">必填项：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input" placeholder="必填项" data-require="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">纯数字：</span>
+                        </label>
+                        <div>
+                            <input type="number" class="ne-input" placeholder="只允许纯数字" data-validate="num">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">手机号：</span>
+                        </label>
+                        <div>
+                            <input type="tel" class="ne-input" placeholder="11位手机号" data-validate="tel">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">邮箱：</span>
+                        </label>
+                        <div>
+                            <input type="email" class="ne-input" placeholder="邮箱验证" data-validate="mail">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">url地址：</span>
+                        </label>
+                        <div>
+                            <input type="url" class="ne-input" placeholder="url地址验证" data-validate="url">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">身份证号：</span>
+                        </label>
+                        <div>
+                            <input type="url" class="ne-input" placeholder="15/18位身份证" data-validate="idcard">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">文本框：</span>
+                        </label>
+                        <div>
+                            <textarea type="url" class="ne-textarea" placeholder="必填" rows="4" data-require="true"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary" type="submit">提交</button>
+            <button class="ne-btn ne-btn-default" type="reset">清除</button>
+        </div>
+    </form>
+    <form onsubmit="formsubmit(this);" class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>自定义验证</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">自定义格式验证：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input" placeholder="自定义正则验证" data-require="true" data-validate="pattern:[A-z]{3}">
+                        </div>
+                    </div>
+                </div>
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">自定义函数验证：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input" placeholder="自定义函数验证" data-validate="fn:customValidate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary" type="submit">提交</button>
+            <button class="ne-btn ne-btn-default" type="reset">清除</button>
+        </div>
+    </form>
+    <form onsubmit="formsubmit(this);" class="ne-panel">
+        <div class="ne-panel-header">
+            <div class="header-title">
+                <span>异步验证</span>
+            </div>
+        </div>
+        <div class="ne-panel-body">
+            <div class="ne-row">
+                <div class="ne-col-6">
+                    <div class="ne-field">
+                        <label>
+                            <span class="w8">异步验证：</span>
+                        </label>
+                        <div>
+                            <input type="text" class="ne-input" placeholder="" data-require="true" data-validate="sync:syncValidate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ne-panel-footer">
+            <button class="ne-btn ne-btn-primary" type="submit">提交</button>
+            <button class="ne-btn ne-btn-default" type="reset">清除</button>
+        </div>
+    </form>
+    <script src="/Content/Tools/neui/neui.js"></script>
+    <script src="/Content/Tools/neui-extend/neui.extend.js"></script>
+    <script src="/Content/Tools/NeAdmin/neadmin.frame.js"></script>
+    <script>
+        function formsubmit(form) {
+            if (Ne.acts(form).validate()) {
+                console.log('验证通过');
+            }
+        }
+
+        function customValidate(value) {
+            if (value == 'x') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function syncValidate(value, callback) {
+            setTimeout(function () {
+                var flag = value == 'x';
+                callback(flag, "该用户已存在");
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

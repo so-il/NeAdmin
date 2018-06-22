@@ -469,10 +469,17 @@
                 submenu: {
                     menuType: '',
                     menuItems: [{
-                            icon: '<i class="ne-icon-cup"></i>',
-                            title: '问卷设计',
-                            href: '/views/demo/questionnaire/editor.html'
-                        }, {
+                        icon: '<i class="ne-icon-cup"></i>',
+                        title: '问卷设计',
+                        href: '/views/demo/questionnaire/editor.html'
+                    }, 
+                    {
+                        icon: '<i class="ne-icon-compass"></i>',
+                        title: '路由功能测试',
+                        href: '/views/demo/router/1.html'
+                    }, 
+                    
+                        {
                             icon: '<i class="ne-icon-direction"></i>',
                             title: '侧栏导航测试',
                             href: '',

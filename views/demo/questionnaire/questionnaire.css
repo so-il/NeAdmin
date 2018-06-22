@@ -24,8 +24,8 @@
 
 .q-desc-index {
     font-weight: bolder;
-    position: absolute;
     margin-left: -2em;
+    margin-right: .5em;
 }
 
 .q-desc-isrequired, .q-desc-iskeypoint {

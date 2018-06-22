@@ -30,7 +30,7 @@
                                     <div class="ne-cell-left">
                                         <i class="q-icon-radio"></i>
                                     </div>
-                                    <div class="ne-cell-center text-excerpt">
+                                    <div class="ne-cell-center">
                                         <strong>单选题</strong>
                                     </div>
                                 </a>
@@ -40,7 +40,7 @@
                                     <div class="ne-cell-left">
                                         <i class="q-icon-checkbox"></i>
                                     </div>
-                                    <div class="ne-cell-center text-excerpt">
+                                    <div class="ne-cell-center">
                                         <strong>多选题</strong>
                                     </div>
                                 </a>
@@ -50,7 +50,7 @@
                                     <div class="ne-cell-left">
                                         <i class="q-icon-input"></i>
                                     </div>
-                                    <div class="ne-cell-center text-excerpt">
+                                    <div class="ne-cell-center">
                                         <strong>问答填空题</strong>
                                     </div>
                                 </a>
@@ -60,7 +60,7 @@
                                     <div class="ne-cell-left">
                                         <img class="iconsize-small bg-grey border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                                     </div>
-                                    <div class="ne-cell-center text-excerpt">
+                                    <div class="ne-cell-center">
                                         <strong>矩阵单选题</strong>
                                     </div>
                                 </a>
@@ -70,7 +70,7 @@
                                     <div class="ne-cell-left">
                                         <img class="iconsize-small bg-grey border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                                     </div>
-                                    <div class="ne-cell-center text-excerpt">
+                                    <div class="ne-cell-center">
                                         <strong>矩阵多选题</strong>
                                     </div>
                                 </a>
@@ -79,13 +79,13 @@
                     </div>
                 </div>
                 <div class="margin-top-20">
-                    <buttton class="ne-btn ne-btn-primary size-x-large block margin-bottom-20" onclick="saveQuestionnaireData();">
-                        <i class="ne-icon-success-f" style="font-size:1.2em;"></i>
-                        <span class="text-tagged" style="margin-top: -4px;">保存编辑</span>
+                    <buttton class="ne-btn ne-btn-primary block margin-bottom-20" onclick="saveQuestionnaireData();">
+                        <i class="ne-icon-success-f"></i>
+                        <span class="text-tagged">保存编辑</span>
                     </buttton>
-                    <a class="ne-btn ne-btn-default size-x-large block margin-0 back">
-                        <i class="ne-icon-undo" style="font-size:1.2em;"></i>
-                        <span class="text-tagged" style="margin-top:-4px;">返回</span>
+                    <a class="ne-btn ne-btn-default block margin-0 back">
+                        <i class="ne-icon-undo"></i>
+                        <span class="text-tagged">返回</span>
                     </a>
                 </div>
             </div>
@@ -98,8 +98,8 @@
     <script id="tpl-questionnaire-editor" type="text/template">
         <div class="questionnaire-editor">
             <div class="questionnaire-info bg-white">
-                <div class="questionnaire-title"></div>
-                <div class="questionnaire-desc"></div>
+                <div class="questionnaire-title">问卷标题</div>
+                <div class="questionnaire-desc">辅助描述说明，摘要</div>
             </div>
             <div class="questionnaire-questions">
                 <div class="ne-panel" ne-role="panel">
@@ -107,29 +107,29 @@
                         <div class="header-title">
                             <span></span>
                         </div>
-                        <div class="header-actions">
-                            <div class="inline-block margin-right-15 ne-tips" data-tips="编辑" data-action="edit">
+                        <div class="header-actions blue">
+                            <div class="inline-block margin-right-15 ne-tips clickable" data-tips="编辑" data-action="edit">
                                 <i class="ne-icon-edit"></i>
                             </div>
-                            <div class="inline-block margin-right-15 ne-tips" data-tips="复制" data-action="copy">
+                            <div class="inline-block margin-right-15 ne-tips clickable" data-tips="复制" data-action="copy">
                                 <i class="ne-icon-docs"></i>
                             </div>
-                            <div class="inline-block margin-right-15 ne-tips" data-tips="删除" data-action="remove">
+                            <div class="inline-block margin-right-15 ne-tips clickable" data-tips="删除" data-action="remove">
                                 <i class="ne-icon-trash"></i>
                             </div>
                             <span style="display: inline-block;vertical-align: middle;width: 0;height: 20px;border-left: 1px solid #d0d0d0;margin: 3px 15px 0 10px;"></span>
-                            <div class="inline-block margin-right-15 ne-tips" data-task-action="shiftup" data-tips="向上移" data-action="movetoprev">
+                            <div class="inline-block margin-right-15 ne-tips clickable" data-task-action="shiftup" data-tips="向上移" data-action="movetoprev">
                                 <i class="ne-icon-iarrow-up size-double"></i>
                             </div>
-                            <div class="inline-block margin-right-15 ne-tips" data-task-action="shiftdown" data-tips="向下移" data-action="movetonext">
+                            <div class="inline-block margin-right-15 ne-tips clickable" data-task-action="shiftdown" data-tips="向下移" data-action="movetonext">
                                 <i class="ne-icon-iarrow-down size-double"></i>
                             </div>
-                            <div class="inline-block ne-tips" data-tips="收起展开" ne-tap="toggle:panel">
+                            <div class="inline-block ne-tips clickable" data-tips="收起展开" ne-tap="toggle:panel">
                                 <i class="ne-icon-arrow-up size-double ne-panel-switch"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="ne-panel-body">
+                    <div class="ne-panel-body" style="overflow:hidden;">
                         <div class="q-preview">
 
                         </div>

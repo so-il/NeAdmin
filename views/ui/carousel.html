@@ -11,69 +11,102 @@
 </head>
 
 <body>
-        <h4 class="hr-title">不自动播放</h4>
-        <div class="ne-carousel bg-white" ne-role="carousel" ne-swipeable="true">
-            <div class="ne-carousel-container">
-                <div class="ne-carousel-item bg-blue active" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-light" style="margin-top:18%;">BLUE</span>
+    <div class="ne-row spaceing">
+        <div class="ne-col-6">
+            <div class="ne-panel" ne-role="panel">
+                <div class="ne-panel-header">
+                    <div class="header-title">
+                        <span>自动播放</span>
+                    </div>
                 </div>
-                <div class="ne-carousel-item bg-yellow" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bold" style="margin-top:18%;">YELLOW</span>
+                <div class="ne-panel-body">
+                    <div class="ne-carousel bg-white" ne-role="carousel" data-interval="3000" data-autoplay="true">
+                        <div class="ne-carousel-container">
+                            <div class="ne-carousel-item bg-blue active" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">BLUE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ne-carousel-item bg-yellow" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">YELLOW</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ne-carousel-item bg-green" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">GREEN</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ne-carousel-controller" ne-role="carouselcontroller">
+                            <span class="ne-carousel-control active" ne-role="carouselcontrol"></span>
+                            <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
+                            <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
+                        </div>
+                        <div class="ne-carousel-prevbtn white" ne-tap="prev:carousel">
+                            <i class="ne-icon-arrow-left"></i>
+                        </div>
+                        <div class="ne-carousel-nextbtn white" ne-tap="next:carousel">
+                            <i class="ne-icon-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="ne-carousel-item bg-green" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bolder" style="margin-top:18%;">GREEN</span>
-                </div>
-            </div>
-            <div class="ne-carousel-controller" ne-role="carouselcontroller">
-                <span class="ne-carousel-control active" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
             </div>
         </div>
-        <h4 class="hr-title">自动播放</h4>
-        <div class="ne-carousel bg-white" ne-role="carousel" ne-swipeable="true" data-interval="3000" data-autoplay="true">
-            <div class="ne-carousel-container">
-                <div class="ne-carousel-item bg-blue active" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-light" style="margin-top:18%;">BLUE</span>
+        <div class="ne-col-6">
+            <div class="ne-panel" ne-role="panel">
+                <div class="ne-panel-header">
+                    <div class="header-title">
+                        <span>不自动播放</span>
+                    </div>
                 </div>
-                <div class="ne-carousel-item bg-yellow" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bold" style="margin-top:18%;">YELLOW</span>
+                <div class="ne-panel-body">
+                    <div class="ne-carousel bg-white" ne-role="carousel" data-interval="3000">
+                        <div class="ne-carousel-container">
+                            <div class="ne-carousel-item bg-blue active" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">BLUE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ne-carousel-item bg-yellow" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">YELLOW</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ne-carousel-item bg-green" ne-role="carouselitem">
+                                <div class="ne-middlebox">
+                                    <div class="ne-middlebox-content">
+                                        <span class="size-double white">GREEN</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ne-carousel-controller" ne-role="carouselcontroller">
+                            <span class="ne-carousel-control active" ne-role="carouselcontrol"></span>
+                            <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
+                            <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
+                        </div>
+                        <div class="ne-carousel-prevbtn white" ne-tap="prev:carousel">
+                            <i class="ne-icon-arrow-left"></i>
+                        </div>
+                        <div class="ne-carousel-nextbtn white" ne-tap="next:carousel">
+                            <i class="ne-icon-arrow-right"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="ne-carousel-item bg-green" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bolder" style="margin-top:18%;">GREEN</span>
-                </div>
-            </div>
-            <div class="ne-carousel-controller" ne-role="carouselcontroller">
-                <span class="ne-carousel-control active" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
             </div>
         </div>
-        <h4 class="hr-title">左右按钮</h4>
-        <div class="ne-carousel bg-white" ne-role="carousel" ne-swipeable="true" data-interval="3000" data-autoplay="true">
-            <div class="ne-carousel-container">
-                <div class="ne-carousel-item bg-blue active" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-light" style="margin-top:18%;">BLUE</span>
-                </div>
-                <div class="ne-carousel-item bg-yellow" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bold" style="margin-top:18%;">YELLOW</span>
-                </div>
-                <div class="ne-carousel-item bg-green" ne-role="carouselitem">
-                    <span class="block align-center white size-xx-large weight-bolder" style="margin-top:18%;">GREEN</span>
-                </div>
-            </div>
-            <div class="ne-carousel-controller" ne-role="carouselcontroller">
-                <span class="ne-carousel-control active" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
-                <span class="ne-carousel-control" ne-role="carouselcontrol"></span>
-            </div>
-            <a href="javascript:;" class="ne-carousel-prevbtn" ne-tap="prev:carousel">
-                <i class="ne-icon-arrow-left"></i>
-            </a>
-            <a href="javascript:;" class="ne-carousel-nextbtn" ne-tap="next:carousel">
-                <i class="ne-icon-arrow-right"></i>
-            </a>
-        </div>
+    </div>
 
 
 

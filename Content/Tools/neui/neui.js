@@ -420,7 +420,8 @@ function isSelfClosingTAG(tag) {
     var selfClosingTAGs = ['br', 'hr', 'img', 'input', 'link', 'meta', 'base', 'param', 'area', 'col',
         'command', 'embed', 'keygen', 'source', 'track', 'wbr'
     ];
-    return selfClosingTAGs.indexOf(tag) === 0;
+    var flag=selfClosingTAGs.indexOf(tag) >= 0;
+    return flag;
 }
 
 function parseJST(line) {
@@ -640,12 +641,14 @@ function toElement(node) {
         }
     });
     node.children.forEach(function (child) {
-        if (!child.tag) {
-            child = document.createTextNode(child);
-        } else {
-            child = toElement(child);
+        if(child){
+            if (!child.tag) {
+                child = document.createTextNode(child);
+            } else {
+                child = toElement(child);
+            }
+            el.appendChild(child);
         }
-        el.appendChild(child);
     });
     return el;
 }
@@ -883,7 +886,6 @@ function isIgnoreChildren (node) {
 }
 
 module.exports = diff
-
 },{"../util":10,"./listDiff":13,"./patch":14}],12:[function(require,module,exports){
 var _ = require('../util')
 
@@ -949,7 +951,6 @@ Element.prototype.render = function () {
 }
 
 module.exports = Element
-
 },{"../util":10}],13:[function(require,module,exports){
 /**
  * Diff two list in O(N).
@@ -1097,8 +1098,8 @@ function getItemKey (item, key) {
 
 exports.makeKeyIndexAndFree = makeKeyIndexAndFree // exports for test
 exports.diff = diff
-
 },{}],14:[function(require,module,exports){
+
 var _ = require('../util')
 
 var REPLACE = 0
@@ -1206,13 +1207,12 @@ patch.PROPS = PROPS
 patch.TEXT = TEXT
 
 module.exports = patch
-
 },{"../util":10}],15:[function(require,module,exports){
 module.exports.el = require('./element')
 module.exports.diff = require('./diff')
 module.exports.patch = require('./patch')
-
 },{"./diff":11,"./element":12,"./patch":14}],16:[function(require,module,exports){
+
 var _ = require('./util');
 var svd = require('./virtual-dom/virtual-dom');
 var toDom = require('./todom');
@@ -1299,10 +1299,12 @@ function toVirtualDOM(node) {
     }
   });
   node.children.forEach(function (c, i) {
-    if(c.tag){
-      children.push(toVirtualDOM(c));
-    }else{
-      children.push(c);
+    if(c){
+      if(c.tag){
+        children.push(toVirtualDOM(c));
+      }else{
+        children.push(c);
+      }
     }
   });
   return svd.el(tagName, props, children);
@@ -4144,8 +4146,10 @@ function onInput(event) {
 document.addEventListener('input', onInput);
 document.addEventListener('click', onTap);
 Ne.touch && Ne.touch.on(document, 'swipe', onSwipe);
-//init ui
-initUI();
+Ne.dom(function(){
+    //init ui
+    initUI();
+})
 
 },{"../../../NeMotion":1,"../../../NeRender":5,"../../../NeTouch":18,"./lib/component":21,"./lib/dom":22,"./lib/type":23}]},{},[24]);
 
@@ -7094,10 +7098,9 @@ initUI();
         }
     });
 })(Ne);
-
 /****************************************************************** 
  * @range
-*******************************************************************/
+ *******************************************************************/
 
 (function (Ne) {
     //fn 
@@ -7106,15 +7109,15 @@ initUI();
             __max = target.getAttribute('max') || 100,
             __value = target.getAttribute('value') || 0;
 
-        var el_range = Ne.dom.render('<div class="ne-range">'
-                                        +'<div class="ne-range-track"><span></span></div>'
-                                        +'<div class="ne-range-thumb">'
-                                            +'<div class="ne-range-tips"><span></span></div>'
-                                        +'</div>'
-                                    +'</div>'),
-        el_range_track = el_range.querySelector('.ne-range-track'),
-        el_range_thumb = el_range.querySelector('.ne-range-thumb'),
-        el_range_tips = el_range_thumb.querySelector('.ne-range-tips');
+        var el_range = Ne.dom.render('<div class="ne-range">' +
+                '<div class="ne-range-track"><span></span></div>' +
+                '<div class="ne-range-thumb">' +
+                '<div class="ne-range-tips"><span></span></div>' +
+                '</div>' +
+                '</div>'),
+            el_range_track = el_range.querySelector('.ne-range-track'),
+            el_range_thumb = el_range.querySelector('.ne-range-thumb'),
+            el_range_tips = el_range_thumb.querySelector('.ne-range-tips');
         target.parentElement.appendChild(el_range);
         var __maxWidth = el_range_track.offsetWidth;
         var __thumbLeft = __value * __maxWidth / __max;
@@ -7160,17 +7163,27 @@ initUI();
             Ne.dom(el_tips).insertBefore(target);
         }
         el_tips.querySelector('span').innerText = target.value;
+        var curval = target.value;
+        var maxval = target.getAttribute('max') || 100;
+        var move_x = curval * target.offsetWidth / maxval;
+        if (curval > maxval / 2) {
+            var move_x_offset = Ne.motion.timingFunction.Linear(curval - maxval / 2, 0, 1, maxval / 2) * 12;
+            move_x -= move_x_offset;
+        } else if (curval < maxval / 2) {
+            var move_x_offset =12 - Ne.motion.timingFunction.Linear(curval, 0, 1, maxval / 2) * 12;;
+            move_x += move_x_offset;
+        }
         Ne.motion.move({
             el: el_tips,
-            x: target.value * target.offsetWidth / (target.getAttribute('max') || 100),
+            x: move_x,
             y: 0,
             duration: 0
         });
         el_tips.classList.add('visible');
-        el_tips._timing && clearTimeout(el_tips._timing);
-        el_tips._timing = setTimeout(function () {
-            el_tips.classList.remove('visible');
-        }, 1000);
+        //el_tips._timing && clearTimeout(el_tips._timing);
+        //el_tips._timing = setTimeout(function () {
+        //el_tips.classList.remove('visible');
+        //}, 1000);
     }
 
     //define

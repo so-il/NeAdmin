@@ -613,7 +613,7 @@ function CreateQuestionnaire(tpl, qtpl, data) {
 
         function renderLogic(logics, index, onEditCallback) {
             var el = Ne.dom.render(
-                '<div class="ne-cell padding-0 margin-bottom-10"><div class="ne-cell-center"><input type="text" class="ne-input" data-logicedit-control="input" readonly></div><div class="ne-cell-right"><button class="ne-btn ne-btn-default" data-logicedit-control="remove"><i class="ne-icon-trash"></i></button></div></div>'
+                '<div class="ne-cell padding-0 margin-bottom-10"><div class="ne-cell-center"><input type="text" class="ne-input" data-logicedit-control="input"></div><div class="ne-cell-right"><button class="ne-btn ne-btn-default" data-logicedit-control="remove"><i class="ne-icon-trash"></i></button></div></div>'
             );
             var logic = logics[index];
             var controls = queryControls(el, 'data-logicedit-control');

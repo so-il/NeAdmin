@@ -803,7 +803,7 @@
             ThemeSetting.set({
                 color: 'dark',
                 sidebar: {
-                    fixed: false,
+                    fixed: true,
                     collapse: true,
                     cling: false
                 },

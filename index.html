@@ -187,12 +187,32 @@
                                 </li>
                                 <li class="ne-chat-msg align-right">
                                     <div class="msg">
-                                        <i class="ne-icon-meh-f yellow-5 size-x-large" style="opacity: 1;"></i>
+                                        <div class="ne-cell padding-0">
+                                            <div class="ne-cell-left">
+                                                <i class="ne-icon-docs ne-flaticon border-circle bg-white primary"></i>
+                                            </div>
+                                            <div class="ne-cell-center">
+                                                <p class="text-title white">健康报告</p>
+                                                <p class="text-meta line-clamp-1 white">
+                                                    2016-05-01
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="photo">
                                         <a>
                                             <img class="bg-blue border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                                         </a>
+                                    </div>
+                                </li>
+                                <li class="ne-chat-msg align-left">
+                                    <div class="photo">
+                                        <a>
+                                            <img class="bg-light border-round" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                        </a>
+                                    </div>
+                                    <div class="msg">
+                                        <i class="ne-icon-frown-f orange-5" style="opacity: 1;"></i>
                                     </div>
                                 </li>
                             </ul>
@@ -360,7 +380,9 @@
                             <input class="ne-input w100 border-none" placeholder="快捷搜索" />
                         </div>
                         <div class="ne-cell-right">
-                            <a ne-tap="hide:dialog"><i class="ne-icon-delete"></i></a>
+                            <a ne-tap="hide:dialog">
+                                <i class="ne-icon-delete"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -377,13 +399,13 @@
                 <div class="ne-cell">
                     <div class="ne-input_withicon_left">
                         <i class="ne-icon-user ne-input-icon"></i>
-                        <input class="ne-input w100" type="text" autocomplete="off" placeholder="请输入账号" name="username">
+                        <input class="ne-input w100" type="text" autocomplete="off" placeholder="请随便输入个账号" name="username">
                     </div>
                 </div>
                 <div class="ne-cell">
                     <div class="ne-input_withicon_left">
                         <i class="ne-icon-key ne-input-icon"></i>
-                        <input class="ne-input w100" type="password" autocomplete="off" placeholder="请输入密码" name="password">
+                        <input class="ne-input w100" type="password" autocomplete="off" placeholder="请随便输入个密码" name="password">
                     </div>
                 </div>
                 <div class="ne-cell">
@@ -447,8 +469,8 @@
                         <div>
                             <div class="ne-input_withicon_right">
                                 <select id="themesetting-sidebarfixed" class="ne-select" ne-role="picker" onchange="NeAdmin.fixedSidebar();">
-                                    <option value="1">固定</option>
-                                    <option value="0" selected>不固定</option>
+                                    <option value="1" selected>固定</option>
+                                    <option value="0">不固定</option>
                                 </select>
                                 <label class="ne-icon-arrow-down ne-input-icon"></label>
                             </div>

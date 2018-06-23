@@ -1224,7 +1224,7 @@ progress.ne-progress,.ne-progress-bar{
 }
 
 
-  /**
+/**
  * @chat.css
 **/
 
@@ -1258,9 +1258,8 @@ progress.ne-progress,.ne-progress-bar{
     margin: 0 10px;
     vertical-align: top;
     text-align: left;
-    border-radius: 7px;
-    border: 1px solid #e9e9e9;
-    background-color: white;
+    border-radius: 20px;
+    background-color: #e6e5eb;
     word-break: break-word;
 }
 
@@ -1270,7 +1269,6 @@ progress.ne-progress,.ne-progress-bar{
     height: 2.857em;
     vertical-align: top;
     overflow: hidden;
-    box-shadow: 0 0 1px 0 rgba(255, 0, 0, 0.2);
     border-radius: 4px;
 }
 
@@ -1290,42 +1288,28 @@ progress.ne-progress,.ne-progress-bar{
 
 .ne-chat-msg>.msg::before {
     content: '';
-    display: inline-block;
     position: absolute;
-    top: 12px;
-    border: 6px solid transparent;
-}
-
-.ne-chat-msg>.msg::after {
-    content: '';
+    z-index: 0;
+    pointer-events: none;
     display: inline-block;
-    position: absolute;
-    top: 12px;
-    border: 6px solid transparent;
+    width: 14px;
+    height: 14px;
+    background-color: inherit;
 }
-
-.ne-chat-msg.align-right>.msg {
-    background-color: #7ce18d;
-}
-
 .ne-chat-msg.align-left>.msg::before {
-    left: -12px;
-    border-right-color: #e9e9e9;
+    transform: rotate(30deg) skewX(-20deg);
+    left: -1px;
+    top: 8px;
 }
-
-.ne-chat-msg.align-left>.msg::after {
-    left: -10px;
-    border-right-color: white;
-}
-
 .ne-chat-msg.align-right>.msg::before {
-    right: -12px;
-    border-left-color: #e9e9e9;
+    transform: rotate(-30deg) skewX(20deg);
+    right: -1px;
+    top: 8px;
 }
-
-.ne-chat-msg.align-right>.msg::after {
-    right: -10px;
-    border-left-color: #7ce18d;
+ 
+.ne-chat-msg.align-right>.msg {
+    background-color: #4c7ffc;
+    color: #fff;
 }
 
 .ne-chat-inputbar {
@@ -1376,13 +1360,5 @@ progress.ne-progress,.ne-progress-bar{
     transition: all 350ms ease;
 }
 
-.ne-chat-msg.align-right>.msg {
-    background-color: #4c7ffc;
-    border-color: #4c7ffc;
-    color: #fff;
-}
+ 
 
-.ne-chat-msg.align-right>.msg::after,
-.ne-chat-msg.align-right>.msg::before {
-    border-left-color: #4c7ffc;
-}

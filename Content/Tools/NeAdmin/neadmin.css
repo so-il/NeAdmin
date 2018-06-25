@@ -493,6 +493,7 @@ body::-webkit-scrollbar-track {
 .neadmin-aside {
     width: 0;
     opacity: 1;
+    padding-right:20px; 
     -webkit-transition: all 200ms ease;
     transition: all 200ms ease;
     -webkit-transform: translateX(-100%);
@@ -502,6 +503,7 @@ body::-webkit-scrollbar-track {
 .neadmin-aside.block {
     width: 232px;
     opacity: 1;
+    padding-right:0px;
     -webkit-transform: translateX(0);
     transform: translateX(0);
 }
